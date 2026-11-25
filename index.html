@@ -171,6 +171,14 @@ button.grande[aria-expanded="true"] svg{transform:rotate(90deg)}
 .pronto h3{font:800 clamp(1.7rem,3.2vw,2.4rem)/1.1 var(--titulo);letter-spacing:-.025em}
 .pronto a{text-decoration:none}
 .pix-copiar:disabled{opacity:.65;cursor:progress}
+.jadoei{grid-column:1/-1;display:grid;gap:1.1rem;justify-items:start}
+.jadoei-abrir{appearance:none;border:0;font:inherit;font-weight:700;font-size:1.1rem;color:#fff;background:rgba(255,255,255,.16);box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.55);border-radius:999px;min-height:3.3rem;padding:.7rem 1.6rem;cursor:pointer;transition:background-color .25s,color .25s}
+.jadoei-abrir:hover{background:#fff;color:var(--tinta)}
+.jd-form{width:100%;display:grid;grid-template-columns:minmax(0,.7fr) minmax(0,1.3fr) auto;gap:1.1rem;align-items:end}
+.jd-form .campo input{color:var(--tinta);background:#fff}
+.jd-form .campo input[aria-invalid="true"]{border-color:#ff8fa8;background:#fff0f3}
+.jd-form .pix-copiar{min-height:3.25rem;border-radius:1rem;padding:.6rem 1.7rem}
+.jd-msg{font-weight:600;line-height:1.45}
 .pix-uso{grid-column:1/-1;line-height:1.5;color:#d3dcff;border-top:1px solid rgba(255,255,255,.25);padding-top:1.1rem}
 .pix-uso a{color:#fff;font-weight:700}
 .ensaios{font-size:1.12rem;line-height:1.5;max-width:32em;margin-bottom:1.75rem}
@@ -266,7 +274,7 @@ blockquote{font-size:clamp(1.35rem,2.1vw,1.7rem);line-height:1.42;color:var(--co
   .assist-texto,.mapa,.idade-texto,.aulas-texto,.pix,.doar .miolo,.quem .miolo,.onde .miolo{grid-template-columns:minmax(0,1fr)}
   .naipe{font-size:36px}.rotulo{font-size:33px}
   .planta{order:-1}
-  .notas,.form,.responsavel{grid-template-columns:minmax(0,1fr)}
+  .notas,.form,.responsavel,.jd-form{grid-template-columns:minmax(0,1fr)}
   .idade-texto .menores{grid-column:1}
   .pix{scroll-margin-top:5rem}
   .pix-zap{justify-self:start}
@@ -431,6 +439,16 @@ blockquote{font-size:clamp(1.35rem,2.1vw,1.7rem);line-height:1.42;color:var(--co
       <button class="pix-copiar" id="pix-copiar" type="button"><svg viewBox="0 0 32 32" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><rect x="11" y="11" width="16" height="16" rx="4"/><path d="M21 11V9a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v8a4 4 0 0 0 4 4h2"/></svg><b>Copiar chave Pix</b></button>
       <p class="pix-aviso" id="pix-aviso" aria-live="polite">Copie a chave, cole no app do seu banco e escolha o valor. Qualquer quantia ajuda.</p>
       <a class="pix-zap" href="https://wa.me/5513991700808?text=Ol%C3%A1!%20Quero%20fazer%20uma%20doa%C3%A7%C3%A3o%20para%20o%20projeto%20Solistas%20em%20Cena%20S%C3%A3o%20Paulo.">Prefere conversar antes? Fale no WhatsApp</a>
+      <div class="jadoei">
+        <button class="jadoei-abrir" id="jd-abrir" type="button" aria-expanded="false" aria-controls="jd-form">Já doei, quero avisar</button>
+        <form class="jd-form" id="jd-form" novalidate hidden>
+          <div class="campo"><label for="jd-valor">Valor da doação (R$)</label><input id="jd-valor" name="valor" inputmode="decimal" autocomplete="off" maxlength="14" placeholder="50,00"></div>
+          <div class="campo"><label for="jd-nome">Seu nome (opcional, não aparece no site)</label><input id="jd-nome" name="nome" autocomplete="name" maxlength="80"></div>
+          <div class="mel" aria-hidden="true"><label>Não preencha<input name="site" tabindex="-1" autocomplete="off"></label></div>
+          <button class="pix-copiar" id="jd-enviar" type="submit"><b>Avisar</b></button>
+        </form>
+        <p class="jd-msg" id="jd-msg" role="status" hidden></p>
+      </div>
       <p class="pix-uso">Todas as doações são usadas na compra de estantes, cadeiras e instrumentos para o projeto. Acompanhe as compras em <a href="https://www.instagram.com/solistas_em_cena/">@solistas_em_cena</a>.</p>
     </div>
   </div>
@@ -543,6 +561,32 @@ blockquote{font-size:clamp(1.35rem,2.1vw,1.7rem);line-height:1.42;color:var(--co
       var fim=false;function termina(g){if(fim)return;fim=true;env.disabled=false;rot.textContent='Entrar na lista';pronto(d,g);if(g){f.reset();resp.hidden=true}}
       setTimeout(function(){termina(false)},20000);
       fetch(PLANILHA,{method:'POST',body:JSON.stringify(d)}).then(function(x){return x.json()}).then(function(j){termina(!!j.ok)},function(){termina(false)});
+    });
+  })();
+
+  /* "Já doei": grava como pendente na planilha; só conta depois da confirmação */
+  (function(){
+    var URL_AVISO='https://script.google.com/macros/s/AKfycby09quqX4lMtcvJit6hd7H2FR1YpV9c8iNGJ53vtIGY80oxYIBUMBkK4iJulRExl3LVRA/exec';
+    var ab=document.getElementById('jd-abrir'),f=document.getElementById('jd-form'),v=document.getElementById('jd-valor'),n=document.getElementById('jd-nome'),env=document.getElementById('jd-enviar'),rot=env.querySelector('b'),msg=document.getElementById('jd-msg');
+    ab.addEventListener('click',function(){var a=f.hidden;f.hidden=!a;msg.hidden=true;ab.setAttribute('aria-expanded',a);if(a)v.focus()});
+    function numero(t){t=t.replace(/[R$\s]/g,'');if(t.indexOf(',')>=0)t=t.replace(/\./g,'').replace(',','.');else if(/^\d{1,3}(\.\d{3})+$/.test(t))t=t.replace(/\./g,'');return /^\d+(\.\d{1,2})?$/.test(t)?Number(t):NaN}
+    function diz(t){msg.textContent=t;msg.hidden=false}
+    f.addEventListener('submit',function(ev){
+      ev.preventDefault();msg.hidden=true;v.removeAttribute('aria-invalid');
+      var x=numero(v.value);
+      if(!(x>=1&&x<=100000)){v.setAttribute('aria-invalid','true');v.focus();return diz('Escreva o valor, por exemplo 50 ou 50,00.')}
+      env.disabled=true;rot.textContent='Enviando...';
+      var fim=false;
+      function termina(ok){
+        if(fim)return;fim=true;env.disabled=false;rot.textContent='Avisar';
+        if(ok){f.reset();f.hidden=true;ab.setAttribute('aria-expanded','false');diz('Muito obrigado! Assim que confirmarmos no extrato, sua doação entra no contador.')}
+        else{
+          diz('Não conseguimos registrar agora. ');
+          var a=document.createElement('a');a.href='https://wa.me/5513991700808?text='+encodeURIComponent('Olá! Fiz uma doação de R$ '+x.toLocaleString('pt-BR',{minimumFractionDigits:2})+' para o Solistas em Cena.');a.textContent='Avise pelo WhatsApp';msg.appendChild(a);
+        }
+      }
+      setTimeout(function(){termina(false)},20000);
+      fetch(URL_AVISO,{method:'POST',body:JSON.stringify({tipo:'doacao',valor:x,nome:n.value.trim(),site:f.elements.site.value})}).then(function(q){return q.json()}).then(function(j){termina(!!j.ok)},function(){termina(false)});
     });
   })();
 
