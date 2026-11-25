@@ -139,6 +139,42 @@ h1 .cidade{font-size:.3em;line-height:1;letter-spacing:-.02em;margin-top:.55em;f
 .corda:hover b,.corda.soa b{color:var(--foco)}
 .dica{margin-top:1.1rem;font-weight:600}
 
+button.grande{appearance:none;border:0;width:100%;font:inherit;text-align:left;cursor:pointer}
+button.grande[aria-expanded="true"] svg{transform:rotate(90deg)}
+.notas{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.25rem clamp(1.5rem,3vw,2.5rem);margin-top:clamp(1.75rem,3vw,2.5rem)}
+.notas b{display:block;font:800 1.35rem/1.2 var(--titulo);letter-spacing:-.02em;margin-bottom:.35rem}
+.notas p{color:#dfe6ff}
+.notas a{display:block;padding-block:.35rem;font-weight:700}
+.idade-texto .menores{grid-column:2;font-size:1.06rem;line-height:1.5;max-width:36em}
+.form{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem 1.5rem;margin-top:1.25rem;padding:clamp(1.4rem,3.5vw,2.75rem);border-radius:2rem;background:#fff;color:var(--tinta)}
+.form-intro,.form .inteiro{grid-column:1/-1}
+.campo{display:grid;gap:.4rem;min-width:0;border:0;margin:0;padding:0}
+.campo label:not(.ficha),.campo legend{font-weight:700;padding:0}
+.campo legend{margin-bottom:.5rem}
+.campo input,.campo select{width:100%;min-width:0;font:inherit;color:inherit;background:#eef3ff;border:2px solid #9aa9dc;border-radius:1rem;min-height:3.25rem;padding:.6rem 1rem}
+.campo input:focus,.campo select:focus{outline:3px solid #2b86ff;outline-offset:1px;border-color:var(--cobalto)}
+.campo input::placeholder{color:#5a678f;opacity:1}
+.form [aria-invalid="true"]{border-color:#c21f4a;background:#fff0f3}
+.fichas{display:flex;flex-wrap:wrap;gap:.6rem}
+.ficha{position:relative;cursor:pointer}
+.campo .ficha input{position:absolute;inset:0;width:100%;height:100%;min-height:0;opacity:0;cursor:pointer;margin:0;padding:0}
+.ficha span{display:flex;align-items:center;min-height:2.9rem;padding:.4rem 1.15rem;border-radius:999px;font-weight:600;background:#eef3ff;box-shadow:inset 0 0 0 2px #9aa9dc}
+.ficha input:checked+span{background:var(--cobalto);color:#fff;box-shadow:none}
+.ficha input:focus-visible+span{outline:3px solid #2b86ff;outline-offset:2px}
+.responsavel{display:grid;grid-template-columns:1fr 1fr;gap:1rem 1.5rem;padding:1.25rem;border-radius:1.25rem;background:#fff3d6}
+.responsavel>p{grid-column:1/-1}
+.mel{position:absolute;left:-9999px}
+.aceite{display:flex;gap:.9rem;align-items:flex-start;line-height:1.45;cursor:pointer}
+.aceite input{flex:none;width:1.6rem;height:1.6rem;margin:.1rem 0 0;accent-color:var(--cobalto)}
+.erro{color:#b3153f;font-weight:700}
+.pronto{grid-template-columns:minmax(0,1fr)}
+.pronto h3{font:800 clamp(1.7rem,3.2vw,2.4rem)/1.1 var(--titulo);letter-spacing:-.025em}
+.pronto a{text-decoration:none}
+.pix-copiar:disabled{opacity:.65;cursor:progress}
+.pix-uso{grid-column:1/-1;line-height:1.5;color:#d3dcff;border-top:1px solid rgba(255,255,255,.25);padding-top:1.1rem}
+.pix-uso a{color:#fff;font-weight:700}
+.ensaios{font-size:1.12rem;line-height:1.5;max-width:32em;margin-bottom:1.75rem}
+
 /* doação */
 .doar{background:radial-gradient(50rem 40rem at 0% 0%,#fff0b0,transparent 66%),linear-gradient(120deg,#ffd866 0%,#ffb85c 52%,#ff9480 100%)}
 .doar .miolo{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(2.5rem,6vw,5rem);align-items:start}
@@ -195,7 +231,7 @@ blockquote{font-size:clamp(1.35rem,2.1vw,1.7rem);line-height:1.42;color:var(--co
 .linhas span{font-weight:700;font-size:.98rem;line-height:1.2;padding:.3rem .8rem;border-radius:999px;color:#fff}
 .l1{background:#0455a1}.l5{background:#9b3894}
 .crt{margin-top:1.5rem;font-size:clamp(1.2rem,1.9vw,1.45rem);line-height:1.4;text-wrap:balance}
-.onde address{font-style:normal;font-size:clamp(1.25rem,2vw,1.55rem);line-height:1.4;margin-block:.9rem 1.75rem;color:var(--suave)}
+.onde address{font-style:normal;font-size:clamp(1.25rem,2vw,1.55rem);line-height:1.4;margin-block:.9rem 1.25rem;color:var(--suave)}
 .onde .btn{background:var(--luz);color:var(--tinta)}
 .onde .btn.vazado{background:rgba(255,255,255,.12);color:#fff;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.55)}
 .onde .btn.vazado:hover{background:#fff;color:var(--tinta)}
@@ -218,14 +254,16 @@ blockquote{font-size:clamp(1.35rem,2.1vw,1.7rem);line-height:1.42;color:var(--co
   .fala .btn{flex:1 1 100%}
   .topo nav{display:none}
   .topo{padding:.55rem 1.4rem}
-  .atalhos{position:fixed;z-index:20;left:0;right:0;bottom:0;display:grid;grid-template-columns:.8fr 1.2fr;gap:.6rem;padding:.7rem max(.8rem,env(safe-area-inset-right,0px)) calc(.7rem + env(safe-area-inset-bottom,0px)) max(.8rem,env(safe-area-inset-left,0px));background:rgba(247,250,255,.86);-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);box-shadow:0 -14px 40px -22px rgba(6,11,46,.7)}
-  .atalhos a{display:flex;align-items:center;justify-content:center;min-height:3.4rem;border-radius:999px;font-weight:700;font-size:1.06rem;text-decoration:none;text-align:center;line-height:1.15;padding:.4rem .8rem}
+  .atalhos{position:fixed;z-index:20;left:0;right:0;bottom:0;display:grid;grid-template-columns:1fr 1fr;gap:.6rem;padding:.7rem max(.8rem,env(safe-area-inset-right,0px)) calc(.7rem + env(safe-area-inset-bottom,0px)) max(.8rem,env(safe-area-inset-left,0px));background:rgba(247,250,255,.86);-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);box-shadow:0 -14px 40px -22px rgba(6,11,46,.7)}
+  .atalhos a{display:flex;align-items:center;justify-content:center;min-height:3.4rem;border-radius:999px;font-weight:700;font-size:1.03rem;text-decoration:none;text-align:center;line-height:1.15;padding:.4rem .5rem}
   .atalhos .toca{background:linear-gradient(100deg,#0a1340,#1f3fc4);color:#fff}
   .atalhos .doa{background:var(--luz);color:var(--tinta)}
   .rodape{padding-bottom:calc(7rem + env(safe-area-inset-bottom,0px))}
   .assist-texto,.mapa,.idade-texto,.aulas-texto,.pix,.doar .miolo,.quem .miolo,.onde .miolo{grid-template-columns:minmax(0,1fr)}
   .naipe{font-size:36px}.rotulo{font-size:33px}
   .planta{order:-1}
+  .notas,.form,.responsavel{grid-template-columns:minmax(0,1fr)}
+  .idade-texto .menores{grid-column:1}
   .pix{scroll-margin-top:5rem}
   .pix-zap{justify-self:start}
   .equipe{grid-template-columns:minmax(0,1fr);gap:2.25rem;max-width:27rem}
@@ -255,7 +293,7 @@ blockquote{font-size:clamp(1.35rem,2.1vw,1.7rem);line-height:1.42;color:var(--co
           <a class="btn btn-cheio btn-maior" href="https://wa.me/5513991700808?text=Ol%C3%A1!%20Quero%20participar%20do%20Solistas%20em%20Cena%20S%C3%A3o%20Paulo.%20Eu%20toco%3A%20">Quero tocar</a>
           <a class="btn btn-claro btn-maior" href="#pix">Faça sua doação</a>
         </div>
-        <div class="etiquetas"><a class="perto" href="#onde"><svg viewBox="0 0 32 32" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M16 29C16 29 26 20 26 12.5A10 10 0 0 0 6 12.5C6 20 16 29 16 29Z"/><circle cx="16" cy="12.5" r="3.6"/></svg><span>Pertinho do metrô Santa Cruz</span></a><a class="perto" href="https://www.instagram.com/solistas_em_cena/" aria-label="Instagram do projeto: @solistas_em_cena"><svg viewBox="0 0 32 32" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="5" width="22" height="22" rx="7"/><circle cx="16" cy="16" r="5"/><path d="M22 10h.01"/></svg><span>@solistas_em_cena</span></a></div>
+        <div class="etiquetas"><a class="perto" href="#onde"><svg viewBox="0 0 32 32" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="16" cy="16" r="11.5"/><path d="M16 9.5V16L20.5 19"/></svg><span>Ensaios: sábados, 13h30 às 15h</span></a><a class="perto" href="#onde"><svg viewBox="0 0 32 32" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M16 29C16 29 26 20 26 12.5A10 10 0 0 0 6 12.5C6 20 16 29 16 29Z"/><circle cx="16" cy="12.5" r="3.6"/></svg><span>Pertinho do metrô Santa Cruz</span></a><a class="perto" href="https://www.instagram.com/solistas_em_cena/" aria-label="Instagram do projeto: @solistas_em_cena"><svg viewBox="0 0 32 32" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="5" width="22" height="22" rx="7"/><circle cx="16" cy="16" r="5"/><path d="M22 10h.01"/></svg><span>@solistas_em_cena</span></a></div>
       </div>
       <div class="violinista">
         <svg viewBox="-12 -6 122 180" role="img" aria-label="Silhueta de um violinista em pé, tocando sob um foco de luz">
@@ -285,6 +323,11 @@ blockquote{font-size:clamp(1.35rem,2.1vw,1.7rem);line-height:1.42;color:var(--co
       <svg class="planta" id="planta" data-modo="solo" viewBox="-50 0 1000 510" role="img" aria-label="Palco visto de cima: fileiras de cadeiras em semicírculo e o lugar do solista à frente"></svg>
     </div>
     <figure class="ensaio"><img src="img/ensaio.jpg" width="1284" height="590" loading="lazy" alt="Ensaio com os músicos em roda: violinos, violas e violoncelos, e a regência ao fundo"></figure>
+    <div class="notas">
+      <p><b>Já toca um pouco?</b> Venha para o conjunto, mesmo que esteja no começo. O ensaio é aos sábados, das 13h30 às 15h.</p>
+      <p><b>Nunca tocou?</b> As aulas gratuitas, a partir de 2027, são para você. <a href="#aulas">Veja as aulas</a></p>
+      <p><b>Toca outro instrumento?</b> Agora o conjunto é de violino, viola, violoncelo e contrabaixo. Escreva mesmo assim e entre na lista para as próximas etapas.</p>
+    </div>
     <a class="grande grande-luz" href="https://wa.me/5513991700808?text=Ol%C3%A1!%20Quero%20participar%20do%20Solistas%20em%20Cena%20S%C3%A3o%20Paulo.%20Eu%20toco%3A%20"><span><b>Você toca? Venha participar</b><i>Abre o WhatsApp com a mensagem pronta: é só dizer o seu instrumento e enviar.</i></span><svg viewBox="0 0 32 32" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 16H27M18 7L27 16L18 25"/></svg></a>
   </div>
 </section>
@@ -295,6 +338,7 @@ blockquote{font-size:clamp(1.35rem,2.1vw,1.7rem);line-height:1.42;color:var(--co
     <div class="idade-texto">
       <h2>Não temos limite de idade</h2>
       <p class="lead">Aliás, a luta contra o etarismo é uma de nossas causas. Aqui, a idade não decide quem pode aprender, tocar ou subir ao palco.</p>
+      <p class="menores"><b>Menores de 18 anos</b> participam com autorização escrita do responsável. <b>Menores de 12</b> precisam de um responsável presente durante a atividade.</p>
     </div>
   </div>
 </section>
@@ -313,6 +357,27 @@ blockquote{font-size:clamp(1.35rem,2.1vw,1.7rem);line-height:1.42;color:var(--co
     </div>
     <div class="braco" id="braco"></div>
     <p class="dica">Escolha o instrumento e toque nas cordas para ouvir.</p>
+    <button class="grande grande-luz" id="abrir-aula" type="button" aria-expanded="false" aria-controls="form-aula"><span><b>Quero aula gratuita</b><i>Entre na lista de interesse. Os dias e horários serão definidos conforme a procura.</i></span><svg viewBox="0 0 32 32" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 16H27M18 7L27 16L18 25"/></svg></button>
+    <form class="form" id="form-aula" novalidate hidden>
+      <p class="form-intro">Esta é uma lista de interesse e ainda não garante a vaga. Entraremos em contato pelo WhatsApp.</p>
+      <div class="campo"><label for="a-nome">Nome de quem quer aprender</label><input id="a-nome" name="nome" autocomplete="name" required maxlength="120"></div>
+      <div class="campo"><label for="a-fone">WhatsApp com DDD</label><input id="a-fone" name="whatsapp" type="tel" inputmode="tel" autocomplete="tel" required maxlength="30" placeholder="(11) 90000-0000"></div>
+      <div class="campo"><label for="a-idade">Idade</label><input id="a-idade" name="idade" type="number" inputmode="numeric" min="3" max="110" required></div>
+      <div class="campo"><label for="a-inst">Instrumento desejado</label><select id="a-inst" name="instrumento" required><option value="">Escolha</option><option>Violino</option><option>Viola</option><option>Violoncelo</option><option>Contrabaixo</option><option>Ainda não sei</option></select></div>
+      <fieldset class="campo inteiro"><legend>Já tem o instrumento?</legend><div class="fichas"><label class="ficha"><input type="radio" name="temInstrumento" value="Sim"><span>Sim</span></label><label class="ficha"><input type="radio" name="temInstrumento" value="Não" checked><span>Não</span></label></div></fieldset>
+      <fieldset class="campo inteiro"><legend>Em que dias você pode?</legend><div class="fichas"><label class="ficha"><input type="checkbox" name="dias" value="Segunda"><span>Segunda</span></label><label class="ficha"><input type="checkbox" name="dias" value="Terça"><span>Terça</span></label><label class="ficha"><input type="checkbox" name="dias" value="Quarta"><span>Quarta</span></label><label class="ficha"><input type="checkbox" name="dias" value="Quinta"><span>Quinta</span></label><label class="ficha"><input type="checkbox" name="dias" value="Sexta"><span>Sexta</span></label><label class="ficha"><input type="checkbox" name="dias" value="Sábado"><span>Sábado</span></label><label class="ficha"><input type="checkbox" name="dias" value="Domingo"><span>Domingo</span></label></div></fieldset>
+      <fieldset class="campo inteiro"><legend>Em que períodos?</legend><div class="fichas"><label class="ficha"><input type="checkbox" name="periodos" value="Manhã"><span>Manhã</span></label><label class="ficha"><input type="checkbox" name="periodos" value="Tarde"><span>Tarde</span></label><label class="ficha"><input type="checkbox" name="periodos" value="Noite"><span>Noite</span></label></div></fieldset>
+      <div class="responsavel inteiro" id="a-resp" hidden>
+        <p>Como a pessoa é menor de 18 anos, precisamos do contato do responsável.</p>
+        <div class="campo"><label for="a-rnome">Nome do responsável</label><input id="a-rnome" name="responsavel" maxlength="120"></div>
+        <div class="campo"><label for="a-rfone">WhatsApp do responsável</label><input id="a-rfone" name="responsavelWhatsapp" type="tel" inputmode="tel" maxlength="30"></div>
+      </div>
+      <div class="mel" aria-hidden="true"><label>Não preencha<input name="site" tabindex="-1" autocomplete="off"></label></div>
+      <label class="aceite inteiro"><input type="checkbox" id="a-aceite" required><span id="a-aceite-texto">Autorizo o projeto a guardar estes dados para organizar as aulas e falar comigo. Posso pedir para apagar quando quiser.</span></label>
+      <p class="erro inteiro" id="a-erro" role="alert" hidden></p>
+      <button class="pix-copiar inteiro" id="a-enviar" type="submit"><b>Entrar na lista</b></button>
+    </form>
+    <div class="form pronto" id="aula-pronto" hidden tabindex="-1"><h3 id="p-titulo"></h3><p id="p-texto"></p><a class="pix-copiar" id="p-zap" href="https://wa.me/5513991700808"><b>Abrir o WhatsApp</b></a></div>
   </div>
 </section>
 
@@ -361,6 +426,7 @@ blockquote{font-size:clamp(1.35rem,2.1vw,1.7rem);line-height:1.42;color:var(--co
       <button class="pix-copiar" id="pix-copiar" type="button"><svg viewBox="0 0 32 32" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><rect x="11" y="11" width="16" height="16" rx="4"/><path d="M21 11V9a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v8a4 4 0 0 0 4 4h2"/></svg><b>Copiar chave Pix</b></button>
       <p class="pix-aviso" id="pix-aviso" aria-live="polite">Copie a chave, cole no app do seu banco e escolha o valor. Qualquer quantia ajuda.</p>
       <a class="pix-zap" href="https://wa.me/5513991700808?text=Ol%C3%A1!%20Quero%20fazer%20uma%20doa%C3%A7%C3%A3o%20para%20o%20projeto%20Solistas%20em%20Cena%20S%C3%A3o%20Paulo.">Prefere conversar antes? Fale no WhatsApp</a>
+      <p class="pix-uso">Todas as doações são usadas na compra de estantes, cadeiras e instrumentos para o projeto. Acompanhe as compras em <a href="https://www.instagram.com/solistas_em_cena/">@solistas_em_cena</a>.</p>
     </div>
   </div>
 </section>
@@ -408,6 +474,7 @@ blockquote{font-size:clamp(1.35rem,2.1vw,1.7rem);line-height:1.42;color:var(--co
       <div class="metro"><svg viewBox="0 0 48 48" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><rect x="11" y="5" width="26" height="30" rx="8"/><path d="M11 22H37M24 5V22M17 41L13 45M31 41L35 45M17 35L14 41H34L31 35"/><circle cx="17.5" cy="28.5" r="1.2"/><circle cx="30.5" cy="28.5" r="1.2"/></svg><p><b>Estação Santa Cruz</b><span class="linhas"><span class="l1">Linha 1-Azul</span><span class="l5">Linha 5-Lilás</span></span></p></div>
       <p class="crt">Estamos no <b>CRT - Centro de Referência e Treinamento IST/Aids-SP</b></p>
       <address>Rua Santa Cruz, 81, Vila Mariana<br>São Paulo - SP, CEP 04121-000</address>
+      <p class="ensaios"><b>Ensaios aos sábados, das 13h30 às 15h.</b> O horário pode mudar e novos dias podem ser abertos. Confirme pelo WhatsApp antes de vir.</p>
       <div class="acoes">
         <a class="btn" href="https://wa.me/5513991700808?text=Ol%C3%A1!%20Quero%20participar%20do%20Solistas%20em%20Cena%20S%C3%A3o%20Paulo.%20Eu%20toco%3A%20">Quero participar</a>
         <a class="btn vazado" href="https://www.google.com/maps/search/?api=1&amp;query=Rua+Santa+Cruz+81+Vila+Mariana+S%C3%A3o+Paulo+SP+04121-000">Abrir no mapa</a>
@@ -428,6 +495,52 @@ blockquote{font-size:clamp(1.35rem,2.1vw,1.7rem);line-height:1.42;color:var(--co
 
 <script>
 (function(){
+  /* lista de interesse das aulas: grava na planilha e oferece o WhatsApp */
+  (function(){
+    /* endereço do App da Web (Apps Script) que grava na planilha; vazio = só WhatsApp */
+    var PLANILHA='';
+    var f=document.getElementById('form-aula'),ab=document.getElementById('abrir-aula'),resp=document.getElementById('a-resp'),erro=document.getElementById('a-erro'),env=document.getElementById('a-enviar'),rot=env.querySelector('b'),pr=document.getElementById('aula-pronto');
+    function el(n){return f.elements[n]}
+    function menor(){var v=parseInt(el('idade').value,10);return v>=3&&v<18}
+    ab.addEventListener('click',function(){var abre=f.hidden;f.hidden=!abre;pr.hidden=true;ab.setAttribute('aria-expanded',abre);if(abre)el('nome').focus()});
+    el('idade').addEventListener('input',function(){
+      resp.hidden=!menor();
+      document.getElementById('a-aceite-texto').textContent=menor()?'Sou responsável por esta pessoa e autorizo o projeto a guardar estes dados para organizar as aulas e falar conosco. Posso pedir para apagar quando quiser.':'Autorizo o projeto a guardar estes dados para organizar as aulas e falar comigo. Posso pedir para apagar quando quiser.';
+    });
+    function marcados(n){return [].filter.call(f.querySelectorAll('[name="'+n+'"]'),function(c){return c.checked}).map(function(c){return c.value}).join(', ')}
+    function fone(v){var n=v.replace(/\D/g,'').length;return n>=10&&n<=13}
+    function falha(campo,msg){erro.textContent=msg;erro.hidden=false;campo.setAttribute('aria-invalid','true');campo.focus()}
+    function pronto(d,gravou){
+      var msg=gravou?'Olá! Acabei de entrar na lista das aulas gratuitas do Solistas em Cena. Meu nome é '+(d.responsavel||d.nome)+'.'
+        :'Olá! Quero aula gratuita no Solistas em Cena.\nNome: '+d.nome+'\nIdade: '+d.idade+'\nInstrumento: '+d.instrumento+'\nTem instrumento: '+d.temInstrumento+'\nDias: '+(d.dias||'não informado')+'\nPeríodos: '+(d.periodos||'não informado')+(d.responsavel?'\nResponsável: '+d.responsavel:'');
+      document.getElementById('p-titulo').textContent=gravou?'Você está na lista!':'Falta só um passo';
+      document.getElementById('p-texto').textContent=gravou?'Recebemos o seu cadastro. Se quiser, avise também pelo WhatsApp.':'Toque no botão e envie a mensagem que já está pronta, para entrar na lista.';
+      document.getElementById('p-zap').href='https://wa.me/5513991700808?text='+encodeURIComponent(msg);
+      f.hidden=true;pr.hidden=false;ab.setAttribute('aria-expanded','false');pr.focus();
+    }
+    f.addEventListener('submit',function(ev){
+      ev.preventDefault();erro.hidden=true;
+      [].forEach.call(f.querySelectorAll('[aria-invalid]'),function(c){c.removeAttribute('aria-invalid')});
+      var id=Number(el('idade').value);
+      if(el('nome').value.trim().length<3)return falha(el('nome'),'Escreva o nome de quem quer aprender.');
+      if(!fone(el('whatsapp').value))return falha(el('whatsapp'),'Confira o WhatsApp: coloque o DDD e o número.');
+      if(!(id>=3&&id<=110&&Math.floor(id)===id))return falha(el('idade'),'Escreva a idade em anos.');
+      if(!el('instrumento').value)return falha(el('instrumento'),'Escolha o instrumento, ou "Ainda não sei".');
+      if(menor()){
+        if(el('responsavel').value.trim().length<3)return falha(el('responsavel'),'Escreva o nome do responsável.');
+        if(!fone(el('responsavelWhatsapp').value))return falha(el('responsavelWhatsapp'),'Confira o WhatsApp do responsável, com DDD.');
+      }
+      var ac=document.getElementById('a-aceite');
+      if(!ac.checked)return falha(ac,'Para entrar na lista, é preciso autorizar o uso dos dados.');
+      var d={nome:el('nome').value.trim(),whatsapp:el('whatsapp').value.trim(),idade:id,instrumento:el('instrumento').value,temInstrumento:marcados('temInstrumento'),dias:marcados('dias'),periodos:marcados('periodos'),responsavel:menor()?el('responsavel').value.trim():'',responsavelWhatsapp:menor()?el('responsavelWhatsapp').value.trim():'',autoriza:true,site:el('site').value};
+      if(!PLANILHA)return pronto(d,false);
+      env.disabled=true;rot.textContent='Enviando...';
+      var fim=false;function termina(g){if(fim)return;fim=true;env.disabled=false;rot.textContent='Entrar na lista';pronto(d,g);if(g){f.reset();resp.hidden=true}}
+      setTimeout(function(){termina(false)},20000);
+      fetch(PLANILHA,{method:'POST',body:JSON.stringify(d)}).then(function(x){return x.json()}).then(function(j){termina(!!j.ok)},function(){termina(false)});
+    });
+  })();
+
   /* copiar a chave Pix */
   (function(){
     var bt=document.getElementById('pix-copiar'),ch=document.getElementById('pix-chave'),av=document.getElementById('pix-aviso'),rot=bt.querySelector('b'),tm;
