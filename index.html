@@ -921,39 +921,68 @@ blockquote{font-size:clamp(1.35rem,2.1vw,1.7rem);line-height:1.42;color:var(--co
   })();
 
   /* cordas soltas dos quatro instrumentos, da mais aguda para a mais grave */
-  var braco=document.getElementById('braco'),ctx=null,cache={},calmo=matchMedia('(prefers-reduced-motion:reduce)').matches;
-  function som(f){
-    var C=window.AudioContext||window.webkitAudioContext;if(!C)return;
-    ctx=ctx||new C();if(ctx.state==='suspended')ctx.resume();
-    if(!cache[f]){
-      var sr=ctx.sampleRate,n=Math.floor(sr*2.6),buf=ctx.createBuffer(1,n,sr),o=buf.getChannelData(0),N=Math.round(sr/f-.5),r=new Float32Array(N),u=0,p=0,m=0;
-      for(u=0;u<N;u++){p+=.45*(Math.random()*2-1-p);r[u]=p;m=Math.max(m,Math.abs(p))}
-      for(u=0;u<n;u++){var j=u%N,v=r[j];o[u]=v/m*.5*Math.min(1,(n-u)/(sr*.3));r[j]=.998*.5*(v+r[(j+1)%N])}
-      cache[f]=buf;
+  var braco=document.getElementById('braco'),ctx=null,saida=null,cache={},tocando={},calmo=matchMedia('(prefers-reduced-motion:reduce)').matches;
+  /* pizzicato: soma de parciais exatos (sem arredondar a afinação), ressonâncias do corpo e o toque do dedo.
+     corpo = [frequência, largura, ganho]; t = segundos até a nota cair 60 dB; brilho = corte do ataque do dedo em Hz */
+  var CORPO={
+    violino:{t:1.15,brilho:2600,corpo:[[275,60,1.1],[460,90,1.5],[560,110,1],[1050,300,.5],[2400,700,.35]],toque:[[275,.05],[455,.035]]},
+    viola:{t:1.35,brilho:2000,corpo:[[220,50,1.1],[350,80,1.4],[450,100,1],[900,280,.45],[1900,600,.28]],toque:[[220,.06],[360,.04]]},
+    violoncelo:{t:1.9,brilho:1400,corpo:[[100,30,.9],[175,50,1.3],[220,60,1.1],[430,160,.6],[1000,400,.3]],toque:[[105,.08],[190,.05]]},
+    contrabaixo:{t:2.5,brilho:950,corpo:[[62,22,.8],[105,35,1.2],[160,60,1],[300,130,.7],[650,300,.35]],toque:[[68,.1],[112,.07]]}
+  };
+  function pizz(sr,f,nome){
+    var c=CORPO[nome],n=Math.floor(sr*Math.min(2.8,c.t*1.25)),o=new Float32Array(n),h,k,pico=0,maxH=Math.min(40,Math.floor(Math.min(sr*.42,9000)/f)),t60=c.t*Math.pow(220/Math.max(f,60),nome==='contrabaixo'?.12:.22);
+    function modo(fr,amp,queda,fase){
+      var w=2*Math.PI*fr/sr,r=Math.exp(-6.908/(queda*sr)),a=2*r*Math.cos(w),b=r*r,y2=amp*Math.sin(fase-2*w)/(r*r),y1=amp*Math.sin(fase-w)/r,y,q;
+      for(q=0;q<n;q++){y=a*y1-b*y2;o[q]+=y;y2=y1;y1=y}
     }
-    var s=ctx.createBufferSource(),lp=ctx.createBiquadFilter();lp.type='lowpass';lp.frequency.value=3600;
-    s.buffer=cache[f];s.connect(lp);lp.connect(ctx.destination);s.start();
+    for(h=1;h<=maxH;h++){
+      var fr=f*h,g=Math.sin(Math.PI*h*.23)/h/(1+Math.pow(fr/c.brilho,2)),b=.35;
+      for(k=0;k<c.corpo.length;k++)b+=c.corpo[k][2]*Math.exp(-Math.pow((fr-c.corpo[k][0])/c.corpo[k][1],2)/2);
+      var q=t60/(1+.22*(h-1)+Math.pow(fr/3200,2));
+      modo(fr,g*b*.72,q*.45,0);modo(fr,g*b*.38,q,0);
+    }
+    c.toque.forEach(function(t,j){modo(t[0],.1/(j+1),t[1]*2.2,0)});
+    var at=sr*(nome==='contrabaixo'?.006:nome==='violoncelo'?.0045:.003);
+    for(k=0;k<n;k++){if(k<at)o[k]*=.5-.5*Math.cos(Math.PI*k/at);if(n-k<sr*.12)o[k]*=(n-k)/(sr*.12);pico=Math.max(pico,Math.abs(o[k]))}
+    for(k=0;k<n;k++)o[k]*=.6/pico;
+    return o;
   }
+  function som(f,nome){
+    var C=window.AudioContext||window.webkitAudioContext;if(!C)return;
+    if(!ctx){
+      ctx=new C();saida=ctx.createGain();
+      var sr=ctx.sampleRate,m=Math.floor(sr*.9),ir=ctx.createBuffer(2,m,sr),sala=ctx.createConvolver(),molhado=ctx.createGain(),z,k;
+      for(z=0;z<2;z++){var d=ir.getChannelData(z),lp=0;for(k=0;k<m;k++){lp+=.28*((Math.random()*2-1)-lp);d[k]=k<sr*.012?0:lp*Math.exp(-6.9*k/m)}}
+      sala.buffer=ir;molhado.gain.value=.2;saida.connect(ctx.destination);saida.connect(sala);sala.connect(molhado);molhado.connect(ctx.destination);
+    }
+    if(ctx.state==='suspended')ctx.resume();
+    var id=nome+f,agora=ctx.currentTime;
+    if(!cache[id]){var v=pizz(ctx.sampleRate,f,nome),bf=ctx.createBuffer(1,v.length,ctx.sampleRate);bf.getChannelData(0).set(v);cache[id]=bf}
+    if(tocando[id])tocando[id].gain.setTargetAtTime(0,agora,.012);
+    var s=ctx.createBufferSource(),g=ctx.createGain();s.buffer=cache[id];s.connect(g);g.connect(saida);s.start();tocando[id]=g;
+  }
+  /* quintas justas a partir do lá 440 (quartas no contrabaixo), como se afina o instrumento */
   var inst={
-    violino:[['Mi',659.26,1.5],['Lá',440,2.2],['Ré',293.66,3],['Sol',196,4]],
-    viola:[['Lá',440,2],['Ré',293.66,3],['Sol',196,4],['Dó',130.81,5.2]],
-    violoncelo:[['Lá',220,3],['Ré',146.83,4.2],['Sol',98,5.6],['Dó',65.41,7]],
-    contrabaixo:[['Sol',98,4.5],['Ré',73.42,6],['Lá',55,7.5],['Mi',41.2,9]]
+    violino:[['Mi',660,1.5],['Lá',440,2.2],['Ré',880/3,3],['Sol',1760/9,4]],
+    viola:[['Lá',440,2],['Ré',880/3,3],['Sol',1760/9,4],['Dó',3520/27,5.2]],
+    violoncelo:[['Lá',220,3],['Ré',440/3,4.2],['Sol',880/9,5.6],['Dó',1760/27,7]],
+    contrabaixo:[['Sol',880/9,4.5],['Ré',220/3,6],['Lá',55,7.5],['Mi',41.25,9]]
   };
   var cordas=[0,1,2,3].map(function(ix){
     var b=document.createElement('button');b.type='button';b.className='corda';
     b.innerHTML='<svg viewBox="0 0 1000 80" preserveAspectRatio="none" aria-hidden="true"><path d="M0 40Q500 40 1000 40"/></svg><b></b>';
     braco.appendChild(b);
-    var path=b.querySelector('path'),raf=0,freq=0;
+    var path=b.querySelector('path'),raf=0,freq=0,qual='violino';
     b.addEventListener('click',function(){
-      som(freq);b.classList.add('soa');cancelAnimationFrame(raf);var t0=performance.now();
+      som(freq,qual);b.classList.add('soa');cancelAnimationFrame(raf);var t0=performance.now();
       (function q(t){
-        var k=Math.max(0,(t-t0)/1000),a=calmo?0:46*Math.exp(-k*2.6)*Math.cos(k*(22+9*Math.log(freq/40)/Math.LN2));
+        var k=Math.max(0,(t-t0)/1000),a=calmo?0:46*Math.exp(-k*3.6)*Math.cos(k*(22+9*Math.log(freq/40)/Math.LN2));
         path.setAttribute('d','M0 40Q500 '+(40+a).toFixed(1)+' 1000 40');
-        if(k<1.9)raf=requestAnimationFrame(q);else{path.setAttribute('d','M0 40Q500 40 1000 40');b.classList.remove('soa')}
+        if(k<1.4)raf=requestAnimationFrame(q);else{path.setAttribute('d','M0 40Q500 40 1000 40');b.classList.remove('soa')}
       })(t0);
     });
-    return function(c,nome){freq=c[1];path.style.strokeWidth=c[2];b.querySelector('b').textContent=c[0];b.setAttribute('aria-label','Ouvir a corda '+c[0]+', '+nome)};
+    return function(c,nome){freq=c[1];qual=nome;path.style.strokeWidth=c[2];b.querySelector('b').textContent=c[0];b.setAttribute('aria-label','Ouvir a corda '+c[0]+', '+nome)};
   });
   var escolhas=[].slice.call(document.querySelectorAll('.escolha button'));
   function afina(nome){
