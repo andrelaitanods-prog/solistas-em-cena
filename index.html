@@ -498,7 +498,7 @@ blockquote{font-size:clamp(1.35rem,2.1vw,1.7rem);line-height:1.42;color:var(--co
   /* lista de interesse das aulas: grava na planilha e oferece o WhatsApp */
   (function(){
     /* endereço do App da Web (Apps Script) que grava na planilha; vazio = só WhatsApp */
-    var PLANILHA='';
+    var PLANILHA='https://script.google.com/macros/s/AKfycby09quqX4lMtcvJit6hd7H2FR1YpV9c8iNGJ53vtIGY80oxYIBUMBkK4iJulRExl3LVRA/exec';
     var f=document.getElementById('form-aula'),ab=document.getElementById('abrir-aula'),resp=document.getElementById('a-resp'),erro=document.getElementById('a-erro'),env=document.getElementById('a-enviar'),rot=env.querySelector('b'),pr=document.getElementById('aula-pronto');
     function el(n){return f.elements[n]}
     function menor(){var v=parseInt(el('idade').value,10);return v>=3&&v<18}
