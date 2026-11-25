@@ -199,6 +199,10 @@ button.grande[aria-expanded="true"] svg{transform:rotate(90deg)}
 .pix-aviso{line-height:1.45;font-weight:500}
 .pix-zap{justify-self:center;font-weight:600;padding-block:.4rem}
 
+.contador{justify-self:start;padding:1.5rem 1.9rem;border-radius:1.75rem;background:rgba(255,255,255,.5)}
+.contador-total{font:800 clamp(2.6rem,5.4vw,4.4rem)/1 var(--titulo);letter-spacing:-.035em;font-variant-numeric:tabular-nums}
+.contador p:last-child{margin-top:.5rem;font-weight:600}
+
 /* idealizador */
 .quem{background:linear-gradient(160deg,#fff 0%,#eef5ff 55%,#dcebff 100%)}
 .quem .miolo{display:grid;grid-template-columns:minmax(0,.82fr) minmax(0,1.18fr);gap:clamp(2rem,6vw,5rem);align-items:start}
@@ -386,6 +390,7 @@ blockquote{font-size:clamp(1.35rem,2.1vw,1.7rem);line-height:1.42;color:var(--co
     <div class="doar-texto">
       <h2>Nem os músicos nem o maestro recebem</h2>
       <p class="lead">Somos um projeto independente e não temos ajuda financeira de nada. Se você acredita nesta iniciativa, faça uma doação de qualquer valor.</p>
+      <div class="contador" id="contador" hidden><p class="contador-total" id="contador-total"></p><p id="contador-texto"></p></div>
     </div>
     <div>
       <p class="lead">Estamos precisando de:</p>
@@ -539,6 +544,36 @@ blockquote{font-size:clamp(1.35rem,2.1vw,1.7rem);line-height:1.42;color:var(--co
       setTimeout(function(){termina(false)},20000);
       fetch(PLANILHA,{method:'POST',body:JSON.stringify(d)}).then(function(x){return x.json()}).then(function(j){termina(!!j.ok)},function(){termina(false)});
     });
+  })();
+
+  /* contador de doações: total da aba "Doações" da planilha; só aparece a partir do mínimo */
+  (function(){
+    var URL_TOTAL='https://script.google.com/macros/s/AKfycby09quqX4lMtcvJit6hd7H2FR1YpV9c8iNGJ53vtIGY80oxYIBUMBkK4iJulRExl3LVRA/exec?o=doacoes',MINIMO=100;
+    var cx=document.getElementById('contador'),ct=document.getElementById('contador-total'),tx=document.getElementById('contador-texto'),atual=0,calmo=matchMedia('(prefers-reduced-motion:reduce)').matches,raf=0;
+    function reais(v,centavos){return 'R$ '+v.toLocaleString('pt-BR',{minimumFractionDigits:centavos?2:0,maximumFractionDigits:centavos?2:0})}
+    function sobe(de,ate){
+      cancelAnimationFrame(raf);var t0=performance.now(),cent=ate%1!==0;
+      if(calmo||de===ate){ct.textContent=reais(ate,cent);return}
+      (function q(t){var k=Math.min(1,Math.max(0,(t-t0)/1800)),e=1-Math.pow(1-k,4),v=de+(ate-de)*e;ct.textContent=reais(k<1?Math.round(v):ate,k<1?false:cent);if(k<1)raf=requestAnimationFrame(q)})(t0);
+      setTimeout(function(){if(ate===atual){cancelAnimationFrame(raf);ct.textContent=reais(ate,cent)}},2200);
+    }
+    function busca(){
+      if(document.hidden)return;
+      fetch(URL_TOTAL).then(function(x){return x.json()}).then(function(j){
+        var tot=Number(j.total),n=Number(j.quantidade);
+        if(!j.ok)return;
+        if(!(tot>=MINIMO)||!(n>0)){cx.hidden=true;atual=0;return}
+        tx.textContent=n===1?'já arrecadados, com 1 doação. Obrigado!':'já arrecadados, com '+n.toLocaleString('pt-BR')+' doações. Obrigado!';
+        cx.hidden=false;
+        if(tot!==atual){
+          if(!atual&&'IntersectionObserver' in window&&!calmo){
+            ct.textContent=reais(tot,tot%1!==0);
+            var io=new IntersectionObserver(function(e){if(e[0].isIntersecting){io.disconnect();sobe(0,atual)}});atual=tot;io.observe(cx);
+          }else{var de=atual;atual=tot;sobe(de,tot)}
+        }
+      }).catch(function(){});
+    }
+    busca();setInterval(busca,90000);document.addEventListener('visibilitychange',busca);
   })();
 
   /* copiar a chave Pix */
