@@ -383,7 +383,7 @@ blockquote{font-size:clamp(1.35rem,2.1vw,1.7rem);line-height:1.42;color:var(--co
         <div class="campo"><label for="t-rfone">WhatsApp do responsável</label><input id="t-rfone" name="responsavelWhatsapp" type="tel" inputmode="tel" maxlength="30"></div>
       </div>
       <div class="mel" aria-hidden="true"><label>Não preencha<input name="site" tabindex="-1" autocomplete="off"></label></div>
-      <label class="aceite inteiro"><input type="checkbox" id="t-aceite"><span id="t-aceite-texto">Autorizo o projeto a receber estes dados por e-mail e a falar comigo sobre a minha participação. Posso pedir para apagar quando quiser.</span></label>
+      <label class="aceite inteiro"><input type="checkbox" id="t-aceite"><span id="t-aceite-texto">Autorizo o projeto a receber e guardar estes dados e a falar comigo sobre a minha participação. Posso pedir para apagar quando quiser.</span></label>
       <p class="erro inteiro" id="t-erro" role="alert" hidden></p>
       <button class="pix-copiar inteiro" id="t-enviar" type="submit"><b>Enviar inscrição</b></button>
       <p class="duvida inteiro">Ficou com dúvida? <a href="https://wa.me/5513991700808?text=Ol%C3%A1!%20Tenho%20uma%20d%C3%BAvida%20sobre%20o%20Solistas%20em%20Cena%20S%C3%A3o%20Paulo.">Pergunte no WhatsApp</a></p>
@@ -588,7 +588,7 @@ blockquote{font-size:clamp(1.35rem,2.1vw,1.7rem);line-height:1.42;color:var(--co
     el('instrumento').addEventListener('change',function(){outro.hidden=el('instrumento').value!=='Outro instrumento'});
     el('idade').addEventListener('input',function(){
       resp.hidden=!menor();
-      document.getElementById('t-aceite-texto').textContent=menor()?'Sou responsável por esta pessoa e autorizo o projeto a receber estes dados por e-mail e a falar conosco sobre a participação. Posso pedir para apagar quando quiser.':'Autorizo o projeto a receber estes dados por e-mail e a falar comigo sobre a minha participação. Posso pedir para apagar quando quiser.';
+      document.getElementById('t-aceite-texto').textContent=menor()?'Sou responsável por esta pessoa e autorizo o projeto a receber e guardar estes dados e a falar conosco sobre a participação. Posso pedir para apagar quando quiser.':'Autorizo o projeto a receber e guardar estes dados e a falar comigo sobre a minha participação. Posso pedir para apagar quando quiser.';
     });
     function marcado(n){var c=f.querySelector('[name="'+n+'"]:checked');return c?c.value:''}
     function fone(v){var n=v.replace(/\D/g,'').length;return n>=10&&n<=13}
