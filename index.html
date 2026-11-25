@@ -195,6 +195,7 @@ button.grande[aria-expanded="true"] svg{transform:rotate(90deg)}
 .falta .instrumentos{grid-column:1/-1;gap:.7rem;text-align:center;padding-inline:1.25rem}
 .falta .instrumentos svg{max-width:24rem;margin-bottom:.4rem}
 .falta .instrumentos span{line-height:1.12;text-wrap:balance}
+.falta .instrumentos+.instrumentos svg{max-width:17rem}
 .falta .instrumentos p{text-wrap:balance;font-size:1.18rem;font-weight:500}
 .pix{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:1.1rem clamp(1.5rem,4vw,3rem);align-items:center;padding:clamp(1.5rem,3.6vw,2.75rem) clamp(1.35rem,4vw,3.25rem);border-radius:2rem;color:#fff;background:linear-gradient(100deg,#060b2e,#12289e 60%,#2464ee);box-shadow:0 30px 70px -34px rgba(10,19,64,.95);scroll-margin-top:6rem}
 .pix h3{font:800 clamp(1.9rem,4.2vw,3.2rem)/1.02 var(--titulo);letter-spacing:-.028em;margin-bottom:.8rem}
@@ -210,6 +211,19 @@ button.grande[aria-expanded="true"] svg{transform:rotate(90deg)}
 .contador{justify-self:start;padding:1.5rem 1.9rem;border-radius:1.75rem;background:rgba(255,255,255,.5)}
 .contador-total{font:800 clamp(2.6rem,5.4vw,4.4rem)/1 var(--titulo);letter-spacing:-.035em;font-variant-numeric:tabular-nums}
 .contador p:last-child{margin-top:.5rem;font-weight:600}
+
+@media (min-width:1000px){
+  .doar-texto{grid-column:1/-1;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);column-gap:clamp(2.5rem,6vw,5rem);align-content:start}
+  .doar-texto h2{grid-row:1/4}
+  .precisa{grid-column:1/-1}
+  .falta{grid-template-columns:minmax(0,.8fr) minmax(0,.8fr) minmax(0,1.5fr) minmax(0,1.1fr);align-items:stretch}
+  .falta li,.falta .instrumentos{grid-column:auto;grid-template-rows:9.5rem auto;align-content:start;align-items:end;gap:1rem}
+  .falta .instrumentos{grid-template-rows:9.5rem auto auto}
+  .falta li>span{align-self:start;font-size:clamp(1.3rem,1.75vw,1.6rem);text-align:center;line-height:1.12}
+  .falta li svg{height:100%;max-height:9.5rem;width:auto;max-width:100%;margin:0}
+  .falta .instrumentos svg,.falta .instrumentos+.instrumentos svg{max-width:100%;margin:0}
+  .falta .instrumentos p{align-self:start;font-size:1.08rem;line-height:1.4;margin-top:-.5rem}
+}
 
 /* idealizador */
 .quem{background:linear-gradient(160deg,#fff 0%,#eef5ff 55%,#dcebff 100%)}
@@ -400,7 +414,7 @@ blockquote{font-size:clamp(1.35rem,2.1vw,1.7rem);line-height:1.42;color:var(--co
       <p class="lead">Somos um projeto independente e não temos ajuda financeira de nada. Se você acredita nesta iniciativa, faça uma doação de qualquer valor.</p>
       <div class="contador" id="contador" hidden><p class="contador-total" id="contador-total"></p><p id="contador-texto"></p></div>
     </div>
-    <div>
+    <div class="precisa">
       <p class="lead">Estamos precisando de:</p>
       <ul class="falta">
         <li>
@@ -428,6 +442,11 @@ blockquote{font-size:clamp(1.35rem,2.1vw,1.7rem);line-height:1.42;color:var(--co
           <span>Violinos, violas, violoncelos e contrabaixos</span>
           <p>para ensinar pessoas de todas as idades</p>
         </li>
+        <li class="instrumentos">
+          <svg viewBox="0 0 400 190" aria-hidden="true" fill="none" stroke="#08153f" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"><path d="M128 108L98 184M128 108L158 184M128 108V184"/><rect x="72" y="46" width="104" height="62" rx="14" fill="#08153f"/><path d="M176 66L210 48V106L176 88Z" fill="#08153f"/><circle cx="98" cy="28" r="17" fill="#08153f"/><circle cx="142" cy="24" r="21" fill="#08153f"/><circle cx="98" cy="28" r="5" fill="#ffd866" stroke="none"/><circle cx="142" cy="24" r="6" fill="#ffd866" stroke="none"/><circle cx="92" cy="64" r="6" fill="#ff5f7a" stroke="none"/><path d="M300 118V184M268 184H332M270 74V82A30 30 0 0 0 330 82V74"/><rect x="282" y="14" width="36" height="78" rx="18" fill="#08153f"/><path d="M290 34H310M290 48H310M290 62H310" stroke="#ffd866" stroke-width="3.5"/></svg>
+          <span>Materiais de audiovisual</span>
+          <p>para documentar o projeto</p>
+        </li>
       </ul>
     </div>
     <div class="pix" id="pix">
@@ -449,7 +468,7 @@ blockquote{font-size:clamp(1.35rem,2.1vw,1.7rem);line-height:1.42;color:var(--co
         </form>
         <p class="jd-msg" id="jd-msg" role="status" hidden></p>
       </div>
-      <p class="pix-uso">Todas as doações são usadas na compra de estantes, cadeiras e instrumentos para o projeto. Acompanhe as compras em <a href="https://www.instagram.com/solistas_em_cena/">@solistas_em_cena</a>.</p>
+      <p class="pix-uso">Todas as doações são usadas na compra de estantes, cadeiras, instrumentos e materiais de audiovisual para o projeto. Acompanhe as compras em <a href="https://www.instagram.com/solistas_em_cena/">@solistas_em_cena</a>.</p>
     </div>
   </div>
 </section>
