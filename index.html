@@ -183,6 +183,14 @@ button.grande[aria-expanded="true"] svg{transform:rotate(90deg)}
 .pix-uso a{color:#fff;font-weight:700}
 .ensaios{font-size:1.12rem;line-height:1.5;max-width:32em;margin-bottom:1.75rem}
 
+.campo textarea{width:100%;min-width:0;font:inherit;color:inherit;background:#eef3ff;border:2px solid #9aa9dc;border-radius:1rem;padding:.8rem 1rem;resize:vertical}
+.campo textarea:focus{outline:3px solid #2b86ff;outline-offset:1px;border-color:var(--cobalto)}
+.ajuda{line-height:1.45}
+.duvida a{font-weight:700;display:inline-block;padding-block:.4rem}
+.zap{position:fixed;z-index:19;right:calc(1.1rem + env(safe-area-inset-right,0px));bottom:calc(1.1rem + env(safe-area-inset-bottom,0px));display:flex;align-items:center;gap:.6rem;min-height:3.5rem;padding:.6rem 1.4rem .6rem 1.1rem;border-radius:999px;background:#0b7a43;color:#fff;font-weight:700;text-decoration:none;box-shadow:0 14px 36px -12px rgba(6,11,46,.75);transition:transform .35s cubic-bezier(.16,1,.3,1)}
+.zap:hover{transform:translateY(-3px)}
+.zap svg{flex:none;width:1.9rem;height:1.9rem}
+
 /* doação */
 .doar{background:radial-gradient(50rem 40rem at 0% 0%,#fff0b0,transparent 66%),linear-gradient(120deg,#ffd866 0%,#ffb85c 52%,#ff9480 100%)}
 .doar .miolo{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(2.5rem,6vw,5rem);align-items:start}
@@ -278,13 +286,15 @@ blockquote{font-size:clamp(1.35rem,2.1vw,1.7rem);line-height:1.42;color:var(--co
   h1{font-size:clamp(3.9rem,19.5vw,8rem)}
   .violinista{width:min(62vw,17rem);justify-self:end;margin-right:4vw;margin-top:1rem}
   .fala .btn{flex:1 1 100%}
+  .zap{bottom:calc(5.6rem + env(safe-area-inset-bottom,0px));right:calc(.8rem + env(safe-area-inset-right,0px));min-height:3.1rem;padding:.45rem 1.05rem .45rem .85rem}
+  .zap svg{width:1.6rem;height:1.6rem}
   .topo nav{display:none}
   .topo{padding:.55rem 1.4rem}
   .atalhos{position:fixed;z-index:20;left:0;right:0;bottom:0;display:grid;grid-template-columns:1fr 1fr;gap:.6rem;padding:.7rem max(.8rem,env(safe-area-inset-right,0px)) calc(.7rem + env(safe-area-inset-bottom,0px)) max(.8rem,env(safe-area-inset-left,0px));background:rgba(247,250,255,.86);-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);box-shadow:0 -14px 40px -22px rgba(6,11,46,.7)}
   .atalhos a{display:flex;align-items:center;justify-content:center;min-height:3.4rem;border-radius:999px;font-weight:700;font-size:1.03rem;text-decoration:none;text-align:center;line-height:1.15;padding:.4rem .5rem}
   .atalhos .toca{background:linear-gradient(100deg,#0a1340,#1f3fc4);color:#fff}
   .atalhos .doa{background:var(--luz);color:var(--tinta)}
-  .rodape{padding-bottom:calc(7rem + env(safe-area-inset-bottom,0px))}
+  .rodape{padding-bottom:calc(10.5rem + env(safe-area-inset-bottom,0px))}
   .assist-texto,.mapa,.idade-texto,.aulas-texto,.pix,.doar .miolo,.quem .miolo,.onde .miolo{grid-template-columns:minmax(0,1fr)}
   .naipe{font-size:36px}.rotulo{font-size:33px}
   .planta{order:-1}
@@ -316,7 +326,7 @@ blockquote{font-size:clamp(1.35rem,2.1vw,1.7rem);line-height:1.42;color:var(--co
         <h1><span>Solistas </span><span>em Cena </span><span class="cidade">São Paulo</span></h1>
         <p class="lead">Um projeto que incentiva novos talentos, de qualquer idade, a melhorar o estudo do instrumento através de obras solistas.</p>
         <div class="acoes">
-          <a class="btn btn-cheio btn-maior" href="https://wa.me/5513991700808?text=Ol%C3%A1!%20Quero%20participar%20do%20Solistas%20em%20Cena%20S%C3%A3o%20Paulo.%20Eu%20toco%3A%20">Quero tocar</a>
+          <a class="btn btn-cheio btn-maior" href="#participar" data-tocar>Quero tocar</a>
           <a class="btn btn-claro btn-maior" href="#pix">Faça sua doação</a>
         </div>
         <div class="etiquetas"><a class="perto" href="#onde"><svg viewBox="0 0 32 32" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="16" cy="16" r="11.5"/><path d="M16 9.5V16L20.5 19"/></svg><span>Ensaios: sábados, 13h30 às 15h</span></a><a class="perto" href="#onde"><svg viewBox="0 0 32 32" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M16 29C16 29 26 20 26 12.5A10 10 0 0 0 6 12.5C6 20 16 29 16 29Z"/><circle cx="16" cy="12.5" r="3.6"/></svg><span>Pertinho do metrô Santa Cruz</span></a><a class="perto" href="https://www.instagram.com/solistas_em_cena/" aria-label="Instagram do projeto: @solistas_em_cena"><svg viewBox="0 0 32 32" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="5" width="22" height="22" rx="7"/><circle cx="16" cy="16" r="5"/><path d="M22 10h.01"/></svg><span>@solistas_em_cena</span></a></div>
@@ -354,7 +364,31 @@ blockquote{font-size:clamp(1.35rem,2.1vw,1.7rem);line-height:1.42;color:var(--co
       <p><b>Nunca tocou?</b> As aulas gratuitas, a partir de 2027, são para você. <a href="#aulas">Veja as aulas</a></p>
       <p><b>Toca outro instrumento?</b> Agora o conjunto é de violino, viola, violoncelo e contrabaixo. Escreva mesmo assim e entre na lista para as próximas etapas.</p>
     </div>
-    <a class="grande grande-luz" href="https://wa.me/5513991700808?text=Ol%C3%A1!%20Quero%20participar%20do%20Solistas%20em%20Cena%20S%C3%A3o%20Paulo.%20Eu%20toco%3A%20"><span><b>Você toca? Venha participar</b><i>Abre o WhatsApp com a mensagem pronta: é só dizer o seu instrumento e enviar.</i></span><svg viewBox="0 0 32 32" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 16H27M18 7L27 16L18 25"/></svg></a>
+    <button class="grande grande-luz" id="participar" type="button" aria-expanded="false" aria-controls="form-tocar"><span><b>Você toca? Venha participar</b><i>Preencha a inscrição: leva um minuto, e a gente responde.</i></span><svg viewBox="0 0 32 32" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 16H27M18 7L27 16L18 25"/></svg></button>
+    <form class="form" id="form-tocar" novalidate hidden>
+      <p class="form-intro">Ensaios aos sábados, das 13h30 às 15h, no metrô Santa Cruz. Depois da inscrição, entraremos em contato para combinar a sua vinda.</p>
+      <div class="campo"><label for="t-nome">Nome completo</label><input id="t-nome" name="nome" autocomplete="name" maxlength="120"></div>
+      <div class="campo"><label for="t-fone">WhatsApp com DDD</label><input id="t-fone" name="whatsapp" type="tel" inputmode="tel" autocomplete="tel" maxlength="30" placeholder="(11) 90000-0000"></div>
+      <div class="campo"><label for="t-email">E-mail (opcional)</label><input id="t-email" name="email" type="email" inputmode="email" autocomplete="email" maxlength="120"></div>
+      <div class="campo"><label for="t-idade">Idade</label><input id="t-idade" name="idade" type="number" inputmode="numeric" min="3" max="110"></div>
+      <div class="campo"><label for="t-inst">Instrumento</label><select id="t-inst" name="instrumento"><option value="">Escolha</option><option>Violino</option><option>Viola</option><option>Violoncelo</option><option>Contrabaixo</option><option>Outro instrumento</option></select></div>
+      <div class="campo"><label for="t-tempo">Há quanto tempo toca?</label><select id="t-tempo" name="tempo"><option value="">Escolha</option><option>Menos de 1 ano</option><option>De 1 a 3 anos</option><option>De 3 a 6 anos</option><option>Mais de 6 anos</option><option>Toquei e parei</option></select></div>
+      <div class="campo inteiro" id="t-outro" hidden><label for="t-qual">Qual instrumento?</label><input id="t-qual" name="qual" maxlength="60"><p class="ajuda">Hoje o conjunto é de cordas. Você entra na lista para as próximas etapas.</p></div>
+      <fieldset class="campo inteiro"><legend>Como quer participar?</legend><div class="fichas"><label class="ficha"><input type="radio" name="modo" value="Como solista"><span>Como solista</span></label><label class="ficha"><input type="radio" name="modo" value="No conjunto"><span>No conjunto</span></label><label class="ficha"><input type="radio" name="modo" value="Os dois"><span>Os dois</span></label><label class="ficha"><input type="radio" name="modo" value="Ainda não sei" checked><span>Ainda não sei</span></label></div></fieldset>
+      <fieldset class="campo inteiro"><legend>Pode aos sábados, das 13h30 às 15h?</legend><div class="fichas"><label class="ficha"><input type="radio" name="sabado" value="Sim" checked><span>Sim</span></label><label class="ficha"><input type="radio" name="sabado" value="Às vezes"><span>Às vezes</span></label><label class="ficha"><input type="radio" name="sabado" value="Não"><span>Não</span></label></div></fieldset>
+      <div class="campo inteiro"><label for="t-msg">Quer contar algo? (opcional)</label><textarea id="t-msg" name="mensagem" rows="3" maxlength="600"></textarea></div>
+      <div class="responsavel inteiro" id="t-resp" hidden>
+        <p>Como a pessoa é menor de 18 anos, precisamos do contato do responsável.</p>
+        <div class="campo"><label for="t-rnome">Nome do responsável</label><input id="t-rnome" name="responsavel" maxlength="120"></div>
+        <div class="campo"><label for="t-rfone">WhatsApp do responsável</label><input id="t-rfone" name="responsavelWhatsapp" type="tel" inputmode="tel" maxlength="30"></div>
+      </div>
+      <div class="mel" aria-hidden="true"><label>Não preencha<input name="site" tabindex="-1" autocomplete="off"></label></div>
+      <label class="aceite inteiro"><input type="checkbox" id="t-aceite"><span id="t-aceite-texto">Autorizo o projeto a receber estes dados por e-mail e a falar comigo sobre a minha participação. Posso pedir para apagar quando quiser.</span></label>
+      <p class="erro inteiro" id="t-erro" role="alert" hidden></p>
+      <button class="pix-copiar inteiro" id="t-enviar" type="submit"><b>Enviar inscrição</b></button>
+      <p class="duvida inteiro">Ficou com dúvida? <a href="https://wa.me/5513991700808?text=Ol%C3%A1!%20Tenho%20uma%20d%C3%BAvida%20sobre%20o%20Solistas%20em%20Cena%20S%C3%A3o%20Paulo.">Pergunte no WhatsApp</a></p>
+    </form>
+    <div class="form pronto" id="tocar-pronto" hidden tabindex="-1"><h3 id="t-titulo"></h3><p id="t-texto"></p><a class="pix-copiar" id="t-zap" href="https://wa.me/5513991700808"><b>Abrir o WhatsApp</b></a></div>
   </div>
 </section>
 
@@ -402,6 +436,7 @@ blockquote{font-size:clamp(1.35rem,2.1vw,1.7rem);line-height:1.42;color:var(--co
       <label class="aceite inteiro"><input type="checkbox" id="a-aceite" required><span id="a-aceite-texto">Autorizo o projeto a guardar estes dados para organizar as aulas e falar comigo. Posso pedir para apagar quando quiser.</span></label>
       <p class="erro inteiro" id="a-erro" role="alert" hidden></p>
       <button class="pix-copiar inteiro" id="a-enviar" type="submit"><b>Entrar na lista</b></button>
+      <p class="duvida inteiro">Ficou com dúvida? <a href="https://wa.me/5513991700808?text=Ol%C3%A1!%20Tenho%20uma%20d%C3%BAvida%20sobre%20o%20Solistas%20em%20Cena%20S%C3%A3o%20Paulo.">Pergunte no WhatsApp</a></p>
     </form>
     <div class="form pronto" id="aula-pronto" hidden tabindex="-1"><h3 id="p-titulo"></h3><p id="p-texto"></p><a class="pix-copiar" id="p-zap" href="https://wa.me/5513991700808"><b>Abrir o WhatsApp</b></a></div>
   </div>
@@ -518,12 +553,12 @@ blockquote{font-size:clamp(1.35rem,2.1vw,1.7rem);line-height:1.42;color:var(--co
       <address>Rua Santa Cruz, 81, Vila Mariana<br>São Paulo - SP, CEP 04121-000</address>
       <p class="ensaios"><b>Ensaios aos sábados, das 13h30 às 15h.</b> O horário pode mudar e novos dias podem ser abertos. Confirme pelo WhatsApp antes de vir.</p>
       <div class="acoes">
-        <a class="btn" href="https://wa.me/5513991700808?text=Ol%C3%A1!%20Quero%20participar%20do%20Solistas%20em%20Cena%20S%C3%A3o%20Paulo.%20Eu%20toco%3A%20">Quero participar</a>
+        <a class="btn" href="#participar" data-tocar>Quero participar</a>
         <a class="btn vazado" href="https://www.google.com/maps/search/?api=1&amp;query=Rua+Santa+Cruz+81+Vila+Mariana+S%C3%A3o+Paulo+SP+04121-000">Abrir no mapa</a>
       </div>
     </div>
     <dl class="contato">
-      <div><dt>WhatsApp</dt><dd><a href="https://wa.me/5513991700808">(13) 99170-0808</a></dd></div>
+      <div><dt>Dúvidas? Fale no WhatsApp</dt><dd><a href="https://wa.me/5513991700808?text=Ol%C3%A1!%20Tenho%20uma%20d%C3%BAvida%20sobre%20o%20Solistas%20em%20Cena%20S%C3%A3o%20Paulo.">(13) 99170-0808</a></dd></div>
       <div><dt>Instagram do projeto</dt><dd><a href="https://www.instagram.com/solistas_em_cena/">@solistas_em_cena</a></dd></div>
       <div><dt>Instagram do maestro</dt><dd><a href="https://www.instagram.com/andrelaitanooficial/">@andrelaitanooficial</a></dd></div>
     </dl>
@@ -531,12 +566,66 @@ blockquote{font-size:clamp(1.35rem,2.1vw,1.7rem);line-height:1.42;color:var(--co
 </section>
 </main>
 
-<nav class="atalhos" aria-label="Participar ou doar"><a class="toca" href="https://wa.me/5513991700808?text=Ol%C3%A1!%20Quero%20participar%20do%20Solistas%20em%20Cena%20S%C3%A3o%20Paulo.%20Eu%20toco%3A%20">Quero tocar</a><a class="doa" href="#pix">Faça sua doação</a></nav>
+<a class="zap" href="https://wa.me/5513991700808?text=Ol%C3%A1!%20Tenho%20uma%20d%C3%BAvida%20sobre%20o%20Solistas%20em%20Cena%20S%C3%A3o%20Paulo." aria-label="Dúvidas? Fale pelo WhatsApp"><svg viewBox="0 0 32 32" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 27L6.8 20.6A11.2 11.2 0 1 1 11.4 25.2Z"/><path d="M12 11.5C11.4 15.5 16 20.6 20.4 20.2L21.6 17.8L18.6 16.4L17.2 17.8C15.8 17.2 14.8 16.2 14.2 14.8L15.6 13.4L14.3 10.4Z"/></svg><span>Dúvidas?</span></a>
+
+<nav class="atalhos" aria-label="Participar ou doar"><a class="toca" href="#participar" data-tocar>Quero tocar</a><a class="doa" href="#pix">Faça sua doação</a></nav>
 
 <footer class="rodape"><div class="miolo"><p>Solistas em Cena São Paulo. Projeto musical independente.</p></div></footer>
 
 <script>
 (function(){
+  /* inscrição de quem toca: chega por e-mail; se falhar, vai pelo WhatsApp com tudo escrito */
+  (function(){
+    var ENVIO='https://script.google.com/macros/s/AKfycby09quqX4lMtcvJit6hd7H2FR1YpV9c8iNGJ53vtIGY80oxYIBUMBkK4iJulRExl3LVRA/exec';
+    var f=document.getElementById('form-tocar'),ab=document.getElementById('participar'),resp=document.getElementById('t-resp'),erro=document.getElementById('t-erro'),env=document.getElementById('t-enviar'),rot=env.querySelector('b'),pr=document.getElementById('tocar-pronto'),outro=document.getElementById('t-outro');
+    function el(n){return f.elements[n]}
+    function idade(){var v=Number(el('idade').value);return v>=3&&v<=110&&Math.floor(v)===v?v:0}
+    function menor(){var v=idade();return v>0&&v<18}
+    function abre(a){f.hidden=!a;if(a)pr.hidden=true;ab.setAttribute('aria-expanded',a)}
+    ab.addEventListener('click',function(){var a=f.hidden;abre(a);if(a)el('nome').focus()});
+    [].forEach.call(document.querySelectorAll('[data-tocar]'),function(l){l.addEventListener('click',function(){if(pr.hidden)abre(true)})});
+    if(location.hash==='#participar')abre(true);
+    el('instrumento').addEventListener('change',function(){outro.hidden=el('instrumento').value!=='Outro instrumento'});
+    el('idade').addEventListener('input',function(){
+      resp.hidden=!menor();
+      document.getElementById('t-aceite-texto').textContent=menor()?'Sou responsável por esta pessoa e autorizo o projeto a receber estes dados por e-mail e a falar conosco sobre a participação. Posso pedir para apagar quando quiser.':'Autorizo o projeto a receber estes dados por e-mail e a falar comigo sobre a minha participação. Posso pedir para apagar quando quiser.';
+    });
+    function marcado(n){var c=f.querySelector('[name="'+n+'"]:checked');return c?c.value:''}
+    function fone(v){var n=v.replace(/\D/g,'').length;return n>=10&&n<=13}
+    function falha(campo,msg){erro.textContent=msg;erro.hidden=false;campo.setAttribute('aria-invalid','true');campo.focus()}
+    function pronto(d,foi){
+      var msg=foi?'Olá! Acabei de me inscrever para tocar no Solistas em Cena. Meu nome é '+(d.responsavel||d.nome)+'.'
+        :'Olá! Quero tocar no Solistas em Cena.\nNome: '+d.nome+'\nIdade: '+d.idade+'\nInstrumento: '+(d.qual||d.instrumento)+'\nToca há: '+d.tempo+'\nParticipar: '+d.modo+'\nSábados: '+d.sabado+(d.responsavel?'\nResponsável: '+d.responsavel:'')+(d.mensagem?'\n'+d.mensagem:'');
+      document.getElementById('t-titulo').textContent=foi?'Inscrição enviada!':'Falta só um passo';
+      document.getElementById('t-texto').textContent=foi?'Recebemos a sua inscrição e vamos entrar em contato. Se quiser, avise também pelo WhatsApp.':'Toque no botão e envie a mensagem que já está pronta, para concluir a inscrição.';
+      document.getElementById('t-zap').href='https://wa.me/5513991700808?text='+encodeURIComponent(msg);
+      f.hidden=true;pr.hidden=false;ab.setAttribute('aria-expanded','false');pr.focus();
+    }
+    f.addEventListener('submit',function(ev){
+      ev.preventDefault();erro.hidden=true;
+      [].forEach.call(f.querySelectorAll('[aria-invalid]'),function(c){c.removeAttribute('aria-invalid')});
+      var em=el('email').value.trim();
+      if(el('nome').value.trim().length<3)return falha(el('nome'),'Escreva o nome completo.');
+      if(!fone(el('whatsapp').value))return falha(el('whatsapp'),'Confira o WhatsApp: coloque o DDD e o número.');
+      if(em&&!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(em))return falha(el('email'),'Confira o e-mail, ou deixe em branco.');
+      if(!idade())return falha(el('idade'),'Escreva a idade em anos.');
+      if(!el('instrumento').value)return falha(el('instrumento'),'Escolha o instrumento que você toca.');
+      if(!el('tempo').value)return falha(el('tempo'),'Conte há quanto tempo você toca.');
+      if(!outro.hidden&&el('qual').value.trim().length<2)return falha(el('qual'),'Escreva qual é o instrumento.');
+      if(menor()){
+        if(el('responsavel').value.trim().length<3)return falha(el('responsavel'),'Escreva o nome do responsável.');
+        if(!fone(el('responsavelWhatsapp').value))return falha(el('responsavelWhatsapp'),'Confira o WhatsApp do responsável, com DDD.');
+      }
+      var ac=document.getElementById('t-aceite');
+      if(!ac.checked)return falha(ac,'Para enviar, é preciso autorizar o uso dos dados.');
+      var d={tipo:'tocar',nome:el('nome').value.trim(),whatsapp:el('whatsapp').value.trim(),email:em,idade:idade(),instrumento:el('instrumento').value,qual:outro.hidden?'':el('qual').value.trim(),tempo:el('tempo').value,modo:marcado('modo'),sabado:marcado('sabado'),mensagem:el('mensagem').value.trim(),responsavel:menor()?el('responsavel').value.trim():'',responsavelWhatsapp:menor()?el('responsavelWhatsapp').value.trim():'',autoriza:true,site:el('site').value};
+      env.disabled=true;rot.textContent='Enviando...';
+      var fim=false;function termina(g){if(fim)return;fim=true;env.disabled=false;rot.textContent='Enviar inscrição';pronto(d,g);if(g){f.reset();resp.hidden=true;outro.hidden=true}}
+      setTimeout(function(){termina(false)},20000);
+      fetch(ENVIO,{method:'POST',body:JSON.stringify(d)}).then(function(x){return x.json()}).then(function(j){termina(!!j.ok)}).catch(function(){termina(false)});
+    });
+  })();
+
   /* lista de interesse das aulas: grava na planilha e oferece o WhatsApp */
   (function(){
     /* endereço do App da Web (Apps Script) que grava na planilha; vazio = só WhatsApp */
