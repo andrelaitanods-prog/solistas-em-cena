@@ -127,7 +127,9 @@ h1 .cidade{font-size:.3em;line-height:1;letter-spacing:-.02em;margin-top:.55em;f
 .etapas-topo{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:1.5rem clamp(2rem,5vw,4.5rem);align-items:end;margin-bottom:clamp(2.5rem,5vw,3.5rem)}
 .escada{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1.5rem;align-items:end}
 .etapa{position:relative;display:grid;gap:.75rem;align-content:end;min-width:0;padding:1.4rem 1.25rem 1.5rem;border-radius:1.75rem;background:rgba(14,6,60,.55)}
-.e2{padding-top:3.6rem}.e3{padding-top:5rem}.e4{padding-top:1.8rem}
+.e1{padding-top:2.4rem}.e2{padding-top:4.2rem}.e3{padding-top:5.4rem}.e4{padding-top:1.8rem}
+.atual{box-shadow:inset 0 0 0 3px var(--foco)}
+.aqui{position:absolute;left:50%;top:0;transform:translate(-50%,-50%);white-space:nowrap;font-weight:700;line-height:1.2;padding:.5rem 1.15rem;border-radius:999px;background:var(--luz);color:var(--tinta)}
 .e4{background:rgba(255,255,255,.97);color:var(--tinta)}
 .plateia{display:block;width:100%;height:auto;overflow:visible;margin-bottom:.3rem}
 .etapa h3{font:800 clamp(1.3rem,1.75vw,1.6rem)/1.1 var(--titulo);letter-spacing:-.02em;display:flex;align-items:center;gap:.7rem}
@@ -223,6 +225,7 @@ button.grande[aria-expanded="true"] svg{transform:rotate(90deg)}
   .escada{grid-template-columns:repeat(2,minmax(0,1fr));align-items:stretch;gap:1.75rem}
   .e2,.e3{padding-top:1.4rem}
   .etapa{align-content:start}
+  .e1,.e2{padding-top:2.4rem}
   .e2::after{display:none}
 }
 
@@ -449,7 +452,8 @@ blockquote{font-size:clamp(1.35rem,2.1vw,1.7rem);line-height:1.42;color:var(--co
       <p class="lead">Um degrau de cada vez: são quatro etapas, e uma leva à outra. Em todas você encontra <b>solos</b>, para brilhar na frente, e peças <b>tutti</b>, em que todo mundo toca junto. Cada ponto do desenho é um músico: veja o grupo crescer!</p>
     </div>
     <ol class="escada">
-      <li class="etapa e1">
+      <li class="etapa e1 atual" aria-current="step">
+        <p class="aqui">Estamos aqui</p>
         <svg class="plateia" data-etapa="1" viewBox="90 140 360 125" role="img" aria-label="Desenho com 10 pontos, um para cada músico da etapa 1"></svg>
         <h3><span>1</span>Camerata Pequena</h3>
         <p class="etapa-frase">O começo: grupo pequeno, cada som aparece.</p>
