@@ -122,6 +122,34 @@ h1 .cidade{font-size:.3em;line-height:1;letter-spacing:-.02em;margin-top:.55em;f
 .idades{display:grid;grid-template-columns:repeat(6,auto);justify-content:space-between;gap:.02em .3em;font:800 clamp(3.4rem,9vw,8rem)/1.02 var(--titulo);letter-spacing:-.035em;color:var(--cobalto);font-variant-numeric:lining-nums;background:linear-gradient(105deg,#1238c9 5%,#2b86ff 38%,#e8489a 70%,#ff8a3d 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;padding-inline-end:.06em}
 .idade-texto{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:1.5rem clamp(2rem,5vw,4.5rem);align-items:start}
 
+/* etapas */
+.etapas{color:#fff;background:radial-gradient(48rem 36rem at 100% 100%,rgba(255,120,90,.45),transparent 70%),radial-gradient(44rem 34rem at 0% 0%,rgba(43,134,255,.5),transparent 70%),linear-gradient(140deg,#24106b 0%,#6a1c8c 52%,#b02a78 100%)}
+.etapas-topo{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:1.5rem clamp(2rem,5vw,4.5rem);align-items:end;margin-bottom:clamp(2.5rem,5vw,3.5rem)}
+.escada{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1.5rem;align-items:end}
+.etapa{position:relative;display:grid;gap:.75rem;align-content:end;min-width:0;padding:1.4rem 1.25rem 1.5rem;border-radius:1.75rem;background:rgba(14,6,60,.55)}
+.e2{padding-top:3.6rem}.e3{padding-top:5rem}.e4{padding-top:1.8rem}
+.e4{background:rgba(255,255,255,.97);color:var(--tinta)}
+.plateia{display:block;width:100%;height:auto;overflow:visible;margin-bottom:.3rem}
+.etapa h3{font:800 clamp(1.3rem,1.75vw,1.6rem)/1.1 var(--titulo);letter-spacing:-.02em;display:flex;align-items:center;gap:.7rem}
+.etapa h3 span{flex:none;display:grid;place-items:center;width:2.5rem;height:2.5rem;border-radius:50%;background:var(--luz);color:var(--tinta);font-size:1.3rem;letter-spacing:0}
+.etapa-frase{line-height:1.4}
+.etapa-total{line-height:1;font-weight:600}
+.etapa-total b{font:800 2.5rem/1 var(--titulo);letter-spacing:-.03em;margin-right:.15rem}
+.formacao{display:flex;flex-wrap:wrap;gap:.25rem .9rem;font-size:1rem;line-height:1.5}
+.formacao li{display:flex;align-items:center;gap:.4rem}
+.formacao i{flex:none;width:.8rem;height:.8rem;border-radius:50%}
+.regras{display:grid;gap:.45rem;font-size:1rem;line-height:1.4;border-top:1px solid rgba(255,255,255,.28);padding-top:.8rem}
+.e4 .regras{border-top-color:rgba(10,19,64,.2)}
+.regras li{position:relative;padding-left:1.35rem}
+.regras li::before{content:"";position:absolute;left:.1rem;top:.35em;width:.42rem;height:.72rem;border:solid var(--foco);border-width:0 .17rem .17rem 0;transform:rotate(42deg) scale(.9)}
+.e4 .regras li::before{border-color:#c4145f}
+.etapa:not(.e4)::after{content:"";position:absolute;z-index:2;right:-1.5rem;bottom:38%;width:1.5rem;height:1.5rem;background:var(--foco);clip-path:polygon(0 34%,52% 34%,52% 8%,100% 50%,52% 92%,52% 66%,0 66%)}
+.c1{fill:#ffd866;background:#ffd866}.c2{fill:#ff9d6b;background:#ff9d6b}.c3{fill:#6fd3ff;background:#6fd3ff}.c4{fill:#7fe8a8;background:#7fe8a8}.c5{fill:#ff8fc4;background:#ff8fc4}.c6{fill:#c9a2ff;background:#c9a2ff}.c7{fill:#e9edff;background:#e9edff}
+.e4 .c1{fill:#f0a800;background:#f0a800}.e4 .c2{fill:#e8622a;background:#e8622a}.e4 .c3{fill:#1487d8;background:#1487d8}.e4 .c4{fill:#169b57;background:#169b57}.e4 .c5{fill:#d92f83;background:#d92f83}.e4 .c6{fill:#7a3fe0;background:#7a3fe0}.e4 .c7{fill:#2a3560;background:#2a3560}
+.etapas .notas{margin-top:clamp(2.5rem,5vw,3.5rem)}
+.etapas .notas p{color:#fff}
+.etapas .acoes{margin-top:2rem}
+
 /* aulas */
 .aulas{color:#fff;background:radial-gradient(60rem 42rem at 100% 100%,rgba(90,205,255,.6),transparent 68%),linear-gradient(140deg,#0b1f96 0%,#1a3fd6 50%,#1763df 100%)}
 .aulas-texto{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:1.5rem clamp(2rem,5vw,4.5rem);align-items:end;margin-bottom:clamp(2.5rem,5vw,4rem)}
@@ -190,6 +218,13 @@ button.grande[aria-expanded="true"] svg{transform:rotate(90deg)}
 .zap{position:fixed;z-index:19;right:calc(1.1rem + env(safe-area-inset-right,0px));bottom:calc(1.1rem + env(safe-area-inset-bottom,0px));display:flex;align-items:center;gap:.6rem;min-height:3.5rem;padding:.6rem 1.4rem .6rem 1.1rem;border-radius:999px;background:#0b7a43;color:#fff;font-weight:700;text-decoration:none;box-shadow:0 14px 36px -12px rgba(6,11,46,.75);transition:transform .35s cubic-bezier(.16,1,.3,1)}
 .zap:hover{transform:translateY(-3px)}
 .zap svg{flex:none;width:1.9rem;height:1.9rem}
+
+@media (min-width:821px) and (max-width:1099px){
+  .escada{grid-template-columns:repeat(2,minmax(0,1fr));align-items:stretch;gap:1.75rem}
+  .e2,.e3{padding-top:1.4rem}
+  .etapa{align-content:start}
+  .e2::after{display:none}
+}
 
 /* doação */
 .doar{background:radial-gradient(50rem 40rem at 0% 0%,#fff0b0,transparent 66%),linear-gradient(120deg,#ffd866 0%,#ffb85c 52%,#ff9480 100%)}
@@ -276,7 +311,7 @@ blockquote{font-size:clamp(1.35rem,2.1vw,1.7rem);line-height:1.42;color:var(--co
 .rodape{background:var(--noite);color:var(--suave);padding-bottom:2.5rem;font-size:1rem}
 .rodape p{border-top:1px solid #26357a;padding-top:1.5rem}
 
-@media (max-width:1060px){.topo nav a:not(:last-child){display:none}}
+@media (max-width:1120px){.topo nav a:not(:last-child){display:none}}
 @media (max-width:820px){
   .abre{background:linear-gradient(180deg,#0a1a7d 0%,#1238c9 30%,#2b7dff 56%,#8f9dff 74%,#ff9fb0 88%,#ffcf8a 100%)}
   .abre::after{width:150vw;height:90vw;left:-60vw}
@@ -298,6 +333,10 @@ blockquote{font-size:clamp(1.35rem,2.1vw,1.7rem);line-height:1.42;color:var(--co
   .assist-texto,.mapa,.idade-texto,.aulas-texto,.pix,.doar .miolo,.quem .miolo,.onde .miolo{grid-template-columns:minmax(0,1fr)}
   .naipe{font-size:36px}.rotulo{font-size:33px}
   .planta{order:-1}
+  .etapas-topo,.escada{grid-template-columns:minmax(0,1fr)}
+  .e2,.e3{padding-top:1.4rem}
+  .etapa:not(.e4)::after{right:auto;left:50%;bottom:-1.55rem;margin-left:-.8rem;transform:rotate(90deg)}
+  .escada{gap:1.75rem}
   .notas,.form,.responsavel,.jd-form{grid-template-columns:minmax(0,1fr)}
   .idade-texto .menores{grid-column:1}
   .pix{scroll-margin-top:5rem}
@@ -315,7 +354,7 @@ blockquote{font-size:clamp(1.35rem,2.1vw,1.7rem);line-height:1.42;color:var(--co
 <div class="topo">
       <strong>Solistas em Cena</strong>
       <nav aria-label="Seções">
-        <a href="#projeto">O projeto</a><a href="#aulas">Aulas gratuitas</a><a href="#idealizador">Idealizador</a><a href="#assistentes">Assistentes</a><a href="#onde">Onde estamos</a><a href="#pix">Faça sua doação</a>
+        <a href="#projeto">O projeto</a><a href="#etapas">Etapas</a><a href="#aulas">Aulas gratuitas</a><a href="#idealizador">Idealizador</a><a href="#assistentes">Assistentes</a><a href="#onde">Onde estamos</a><a href="#pix">Faça sua doação</a>
       </nav>
     </div>
 
@@ -400,6 +439,55 @@ blockquote{font-size:clamp(1.35rem,2.1vw,1.7rem);line-height:1.42;color:var(--co
       <p class="lead">Aliás, a luta contra o etarismo é uma de nossas causas. Aqui, a idade não decide quem pode aprender, tocar ou subir ao palco.</p>
       <p class="menores"><b>Menores de 18 anos</b> participam com autorização escrita do responsável. <b>Menores de 12</b> precisam de um responsável presente durante a atividade.</p>
     </div>
+  </div>
+</section>
+
+<section class="etapas faixa" id="etapas">
+  <div class="miolo">
+    <div class="etapas-topo">
+      <h2>Da camerata à orquestra</h2>
+      <p class="lead">Um degrau de cada vez: são quatro etapas, e uma leva à outra. Em todas você encontra <b>solos</b>, para brilhar na frente, e peças <b>tutti</b>, em que todo mundo toca junto. Cada ponto do desenho é um músico: veja o grupo crescer!</p>
+    </div>
+    <ol class="escada">
+      <li class="etapa e1">
+        <svg class="plateia" data-etapa="1" viewBox="90 140 360 125" role="img" aria-label="Desenho com 10 pontos, um para cada músico da etapa 1"></svg>
+        <h3><span>1</span>Camerata Pequena</h3>
+        <p class="etapa-frase">O começo: grupo pequeno, cada som aparece.</p>
+        <p class="etapa-total"><b>10</b> músicos</p>
+        <ul class="formacao"><li><i class="c1"></i>Violino I <b>2</b></li><li><i class="c2"></i>Violino II <b>2</b></li><li><i class="c3"></i>Viola <b>2</b></li><li><i class="c4"></i>Violoncelo <b>2</b></li><li><i class="c5"></i>Contrabaixo <b>2</b></li></ul>
+        <ul class="regras"><li>1 solo de cada instrumento por concerto</li><li>Violinos I e II escolhem juntos uma peça.</li><li>2 concertos para completar a etapa</li></ul>
+      </li>
+      <li class="etapa e2">
+        <svg class="plateia" data-etapa="2" viewBox="90 140 360 125" role="img" aria-label="Desenho com 12 pontos, um para cada músico da etapa 2"></svg>
+        <h3><span>2</span>Camerata Intermediária</h3>
+        <p class="etapa-frase">O grupo ganha corpo, e cada naipe, mais voz.</p>
+        <p class="etapa-total"><b>12</b> músicos</p>
+        <ul class="formacao"><li><i class="c1"></i>Violino I <b>3</b></li><li><i class="c2"></i>Violino II <b>3</b></li><li><i class="c3"></i>Viola <b>2</b></li><li><i class="c4"></i>Violoncelo <b>2</b></li><li><i class="c5"></i>Contrabaixo <b>2</b></li></ul>
+        <ul class="regras"><li>1 solo de cada instrumento por concerto</li><li>Violinos I e II já escolhem peças separadas.</li><li>3 concertos para completar a etapa</li></ul>
+      </li>
+      <li class="etapa e3">
+        <svg class="plateia" data-etapa="3" viewBox="90 100 360 165" role="img" aria-label="Desenho com 25 pontos, um para cada músico da etapa 3"></svg>
+        <h3><span>3</span>Orquestra de Cordas</h3>
+        <p class="etapa-frase">Agora é orquestra: o som enche a sala.</p>
+        <p class="etapa-total"><b>25</b> músicos</p>
+        <ul class="formacao"><li><i class="c1"></i>Violino I <b>8</b></li><li><i class="c2"></i>Violino II <b>6</b></li><li><i class="c3"></i>Viola <b>4</b></li><li><i class="c4"></i>Violoncelo <b>5</b></li><li><i class="c5"></i>Contrabaixo <b>2</b></li></ul>
+        <ul class="regras"><li>1 solo de cada instrumento por concerto</li><li>Cada naipe escolhe a sua própria peça.</li><li>8 concertos para completar a etapa</li></ul>
+      </li>
+      <li class="etapa e4">
+        <svg class="plateia" data-etapa="4" viewBox="90 14 360 251" role="img" aria-label="Desenho com 37 pontos, um para cada músico da etapa 4"></svg>
+        <h3><span>4</span>Orquestra Clássica</h3>
+        <p class="etapa-frase">O ponto mais alto: madeiras e metais se juntam às cordas.</p>
+        <p class="etapa-total"><b>37</b> músicos</p>
+        <ul class="formacao"><li><i class="c1"></i>Violino I <b>8</b></li><li><i class="c2"></i>Violino II <b>6</b></li><li><i class="c3"></i>Viola <b>4</b></li><li><i class="c4"></i>Violoncelo <b>5</b></li><li><i class="c5"></i>Contrabaixo <b>2</b></li><li><i class="c6"></i>Flauta <b>2</b></li><li><i class="c6"></i>Oboé <b>2</b></li><li><i class="c6"></i>Clarinete <b>2</b></li><li><i class="c6"></i>Fagote <b>2</b></li><li><i class="c7"></i>Trompa <b>2</b></li><li><i class="c7"></i>Trompete <b>2</b></li></ul>
+        <ul class="regras"><li>1 solo de cada instrumento por concerto</li><li>Cada naipe escolhe a sua própria peça.</li><li>8 concertos para completar a etapa</li></ul>
+      </li>
+    </ol>
+    <div class="notas">
+      <p><b>Solo e tutti, sempre</b> Da primeira à última etapa, há obras solistas e peças para o grupo inteiro. Você cresce sozinho e com todo mundo.</p>
+      <p><b>Uma etapa leva à outra</b> A cada concerto o grupo ganha experiência, recebe mais gente e fica pronto para o próximo degrau.</p>
+      <p><b>Grupos para cada nível</b> À medida que o projeto crescer, montaremos grupos de níveis diferentes. Você sobe de nível aqui dentro, até chegar à etapa 4, a Orquestra Clássica.</p>
+    </div>
+    <div class="acoes"><a class="btn btn-cheio btn-maior" href="#participar" data-tocar>Quero fazer parte</a></div>
   </div>
 </section>
 
@@ -574,6 +662,20 @@ blockquote{font-size:clamp(1.35rem,2.1vw,1.7rem);line-height:1.42;color:var(--co
 
 <script>
 (function(){
+  /* etapas: um ponto por músico, sempre na mesma escala */
+  (function(){
+    var F=[[2,2,2,2,2],[3,3,2,2,2],[8,6,4,5,2],[8,6,4,5,2]],R=[62,102,142];
+    [].forEach.call(document.querySelectorAll('.plateia'),function(sv){
+      var e=+sv.getAttribute('data-etapa'),f=F[e-1],n=f.reduce(function(a,b){return a+b},0),raios=n>20?R:R.slice(0,2),soma=raios.reduce(function(a,b){return a+b},0),ls=[],usados=0,cls=[];
+      raios.forEach(function(r,i){var q=i===raios.length-1?n-usados:Math.round(n*r/soma);usados+=q;for(var k=0;k<q;k++)ls.push([r,q===1?90:172-164*k/(q-1)])});
+      ls.sort(function(a,b){return b[1]-a[1]||a[0]-b[0]});
+      f.forEach(function(q,i){for(var k=0;k<q;k++)cls.push('c'+(i+1))});
+      var pts=ls.map(function(l,i){return [l[0],l[1],cls[i]]}),k;
+      if(e===4){for(k=0;k<8;k++)pts.push([186,148-116*k/7,'c6']);for(k=0;k<4;k++)pts.push([228,112-44*k/3,'c7'])}
+      pts.forEach(function(q){var a=q[1]*Math.PI/180,c=document.createElementNS('http://www.w3.org/2000/svg','circle');c.setAttribute('cx',(270+q[0]*1.08*Math.cos(a)).toFixed(1));c.setAttribute('cy',(262-q[0]*Math.sin(a)).toFixed(1));c.setAttribute('r',13);c.setAttribute('class',q[2]);sv.appendChild(c)});
+    });
+  })();
+
   /* inscrição de quem toca: chega por e-mail; se falhar, vai pelo WhatsApp com tudo escrito */
   (function(){
     var ENVIO='https://script.google.com/macros/s/AKfycby09quqX4lMtcvJit6hd7H2FR1YpV9c8iNGJ53vtIGY80oxYIBUMBkK4iJulRExl3LVRA/exec';
