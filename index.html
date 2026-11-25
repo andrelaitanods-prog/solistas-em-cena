@@ -123,13 +123,17 @@ h1 .cidade{font-size:.3em;line-height:1;letter-spacing:-.02em;margin-top:.55em;f
 
 /* doação */
 .doar{background:radial-gradient(50rem 40rem at 0% 0%,#fff0b0,transparent 66%),linear-gradient(120deg,#ffd866 0%,#ffb85c 52%,#ff9480 100%)}
-.doar .miolo{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(2.5rem,6vw,5rem);align-items:center}
+.doar .miolo{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(2.5rem,6vw,5rem);align-items:start}
 .doar-texto{display:grid;gap:1.5rem}
 .doar-texto .acoes{margin-top:.5rem}
 .falta{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1rem,2vw,1.5rem);margin-top:1.5rem}
 .falta li{display:grid;gap:1rem;justify-items:center;padding:clamp(1.25rem,2.5vw,2rem) 1rem;border-radius:1.75rem;background:rgba(255,255,255,.42)}
-.falta svg{display:block;width:100%;max-width:10.5rem;height:auto}
+.falta svg{display:block;width:100%;max-width:7.5rem;height:auto}
 .falta span{font:800 clamp(1.5rem,2.4vw,2rem)/1 var(--titulo);letter-spacing:-.03em}
+.falta .instrumentos{grid-column:1/-1;gap:.7rem;text-align:center;padding-inline:1.25rem}
+.falta .instrumentos svg{max-width:24rem;margin-bottom:.4rem}
+.falta .instrumentos span{line-height:1.12;text-wrap:balance}
+.falta .instrumentos p{text-wrap:balance;font-size:1.18rem;font-weight:500}
 .pix{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:1.1rem clamp(1.5rem,4vw,3rem);align-items:center;padding:clamp(1.5rem,3.6vw,2.75rem) clamp(1.35rem,4vw,3.25rem);border-radius:2rem;color:#fff;background:linear-gradient(100deg,#060b2e,#12289e 60%,#2464ee);box-shadow:0 30px 70px -34px rgba(10,19,64,.95);scroll-margin-top:6rem}
 .pix h3{font:800 clamp(1.9rem,4.2vw,3.2rem)/1.02 var(--titulo);letter-spacing:-.028em;margin-bottom:.8rem}
 .pix-chave p{color:#d3dcff;line-height:1.4}
@@ -310,6 +314,11 @@ blockquote{font-size:clamp(1.35rem,2.1vw,1.7rem);line-height:1.42;color:var(--co
             <path d="M34 144L26 212M126 144L134 212M54 146L52 196M106 146L108 196M31 178H129"/>
           </svg>
           <span>Cadeiras</span>
+        </li>
+        <li class="instrumentos">
+          <svg viewBox="0 0 400 214" aria-hidden="true"><g transform="translate(22 117.0) scale(0.62)"><path d="M23 18H37M23 27H37" stroke="#08153f" stroke-width="3" stroke-linecap="round"/><path d="M27.2 10H32.8L33.6 66H26.4Z" fill="#08153f"/><circle cx="30" cy="8" r="5.6" fill="#08153f"/><path d="M30 60C44 60 50 69 48 82C47 89 43 92 43 98C43 104 52 109 53 123C54 141 44 150 30 150C16 150 6 141 7 123C8 109 17 104 17 98C17 92 13 89 12 82C10 69 16 60 30 60Z" fill="#08153f"/><path d="M27.6 52H32.4L33.4 96H26.6Z" fill="#ffd866"/><path d="M23 112H37" stroke="#ffd866" stroke-width="2.6" stroke-linecap="round"/><path d="M27.8 122H32.2L34 141H26Z" fill="#ffd866"/><path d="M20 104C16 108 22 116 18 121M40 104C44 108 38 116 42 121" fill="none" stroke="#ffd866" stroke-width="2" stroke-linecap="round"/></g><g transform="translate(98 96.0) scale(0.76)"><path d="M23 18H37M23 27H37" stroke="#08153f" stroke-width="3" stroke-linecap="round"/><path d="M27.2 10H32.8L33.6 66H26.4Z" fill="#08153f"/><circle cx="30" cy="8" r="5.6" fill="#08153f"/><path d="M30 60C44 60 50 69 48 82C47 89 43 92 43 98C43 104 52 109 53 123C54 141 44 150 30 150C16 150 6 141 7 123C8 109 17 104 17 98C17 92 13 89 12 82C10 69 16 60 30 60Z" fill="#08153f"/><path d="M27.6 52H32.4L33.4 96H26.6Z" fill="#ffd866"/><path d="M23 112H37" stroke="#ffd866" stroke-width="2.6" stroke-linecap="round"/><path d="M27.8 122H32.2L34 141H26Z" fill="#ffd866"/><path d="M20 104C16 108 22 116 18 121M40 104C44 108 38 116 42 121" fill="none" stroke="#ffd866" stroke-width="2" stroke-linecap="round"/></g><g transform="translate(184 42.0) scale(1.0)"><path d="M30 150V168" stroke="#08153f" stroke-width="2.6" stroke-linecap="round"/><path d="M23 18H37M23 27H37" stroke="#08153f" stroke-width="3" stroke-linecap="round"/><path d="M27.2 10H32.8L33.6 66H26.4Z" fill="#08153f"/><circle cx="30" cy="8" r="5.6" fill="#08153f"/><path d="M30 60C44 60 50 69 48 82C47 89 43 92 43 98C43 104 52 109 53 123C54 141 44 150 30 150C16 150 6 141 7 123C8 109 17 104 17 98C17 92 13 89 12 82C10 69 16 60 30 60Z" fill="#08153f"/><path d="M27.6 52H32.4L33.4 96H26.6Z" fill="#ffd866"/><path d="M23 112H37" stroke="#ffd866" stroke-width="2.6" stroke-linecap="round"/><path d="M27.8 122H32.2L34 141H26Z" fill="#ffd866"/><path d="M20 104C16 108 22 116 18 121M40 104C44 108 38 116 42 121" fill="none" stroke="#ffd866" stroke-width="2" stroke-linecap="round"/></g><g transform="translate(292 1.7) scale(1.24)"><path d="M30 150V168" stroke="#08153f" stroke-width="2.6" stroke-linecap="round"/><path d="M23 18H37M23 27H37" stroke="#08153f" stroke-width="3" stroke-linecap="round"/><path d="M27.2 10H32.8L33.6 66H26.4Z" fill="#08153f"/><circle cx="30" cy="8" r="5.6" fill="#08153f"/><path d="M30 48C33 62 49 68 48 83C47 89 43 92 43 98C43 104 52 109 53 123C54 141 44 150 30 150C16 150 6 141 7 123C8 109 17 104 17 98C17 92 13 89 12 83C11 68 27 62 30 48Z" fill="#08153f"/><path d="M27.6 52H32.4L33.4 96H26.6Z" fill="#ffd866"/><path d="M23 112H37" stroke="#ffd866" stroke-width="2.6" stroke-linecap="round"/><path d="M27.8 122H32.2L34 141H26Z" fill="#ffd866"/><path d="M20 104C16 108 22 116 18 121M40 104C44 108 38 116 42 121" fill="none" stroke="#ffd866" stroke-width="2" stroke-linecap="round"/></g></svg>
+          <span>Violinos, violas, violoncelos e contrabaixos</span>
+          <p>para ensinar pessoas de todas as idades</p>
         </li>
       </ul>
     </div>
