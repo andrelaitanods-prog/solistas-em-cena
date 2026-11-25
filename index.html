@@ -127,7 +127,7 @@ h1 .cidade{font-size:.3em;line-height:1;letter-spacing:-.02em;margin-top:.55em;f
 .etapas-topo{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:1.5rem clamp(2rem,5vw,4.5rem);align-items:end;margin-bottom:clamp(2.5rem,5vw,3.5rem)}
 .escada{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1.5rem;align-items:end}
 .etapa{position:relative;display:grid;gap:.75rem;align-content:end;min-width:0;padding:1.4rem 1.25rem 1.5rem;border-radius:1.75rem;background:rgba(14,6,60,.55)}
-.e1{padding-top:2.4rem}.e2{padding-top:4.2rem}.e3{padding-top:5.4rem}.e4{padding-top:1.8rem}
+.e1{padding-top:2.4rem}.e2{padding-top:5.8rem}.e3{padding-top:6.8rem}.e4{padding-top:1.8rem}
 .atual{box-shadow:inset 0 0 0 3px var(--foco)}
 .aqui{position:absolute;left:50%;top:0;transform:translate(-50%,-50%);white-space:nowrap;font-weight:700;line-height:1.2;padding:.5rem 1.15rem;border-radius:999px;background:var(--luz);color:var(--tinta)}
 .e4{background:rgba(255,255,255,.97);color:var(--tinta)}
@@ -137,6 +137,11 @@ h1 .cidade{font-size:.3em;line-height:1;letter-spacing:-.02em;margin-top:.55em;f
 .etapa-frase{line-height:1.4}
 .etapa-total{line-height:1;font-weight:600}
 .etapa-total b{font:800 2.5rem/1 var(--titulo);letter-spacing:-.03em;margin-right:.15rem}
+.etapa-total span{display:block;font-size:1rem;margin-bottom:.35rem}
+.progresso{display:grid;gap:.6rem;font-size:1rem;line-height:1.4}
+.degraus{display:grid;grid-template-columns:1fr 1fr;gap:.4rem}
+.degraus i{height:.7rem;border-radius:999px;background:rgba(255,255,255,.22)}
+.degraus .feito{background:var(--luz)}
 .formacao{display:flex;flex-wrap:wrap;gap:.25rem .9rem;font-size:1rem;line-height:1.5}
 .formacao li{display:flex;align-items:center;gap:.4rem}
 .formacao i{flex:none;width:.8rem;height:.8rem;border-radius:50%}
@@ -149,6 +154,7 @@ h1 .cidade{font-size:.3em;line-height:1;letter-spacing:-.02em;margin-top:.55em;f
 .c1{fill:#ffd866;background:#ffd866}.c2{fill:#ff9d6b;background:#ff9d6b}.c3{fill:#6fd3ff;background:#6fd3ff}.c4{fill:#7fe8a8;background:#7fe8a8}.c5{fill:#ff8fc4;background:#ff8fc4}.c6{fill:#c9a2ff;background:#c9a2ff}.c7{fill:#e9edff;background:#e9edff}
 .e4 .c1{fill:#f0a800;background:#f0a800}.e4 .c2{fill:#e8622a;background:#e8622a}.e4 .c3{fill:#1487d8;background:#1487d8}.e4 .c4{fill:#169b57;background:#169b57}.e4 .c5{fill:#d92f83;background:#d92f83}.e4 .c6{fill:#7a3fe0;background:#7a3fe0}.e4 .c7{fill:#2a3560;background:#2a3560}
 .etapas .notas{margin-top:clamp(2.5rem,5vw,3.5rem)}
+.etapas .notas{grid-template-columns:repeat(4,minmax(0,1fr))}
 .etapas .notas p{color:#fff}
 .etapas .acoes{margin-top:2rem}
 
@@ -225,6 +231,7 @@ button.grande[aria-expanded="true"] svg{transform:rotate(90deg)}
   .escada{grid-template-columns:repeat(2,minmax(0,1fr));align-items:stretch;gap:1.75rem}
   .e2,.e3{padding-top:1.4rem}
   .etapa{align-content:start}
+  .etapas .notas{grid-template-columns:repeat(2,minmax(0,1fr))}
   .e1,.e2{padding-top:2.4rem}
   .e2::after{display:none}
 }
@@ -336,7 +343,7 @@ blockquote{font-size:clamp(1.35rem,2.1vw,1.7rem);line-height:1.42;color:var(--co
   .assist-texto,.mapa,.idade-texto,.aulas-texto,.pix,.doar .miolo,.quem .miolo,.onde .miolo{grid-template-columns:minmax(0,1fr)}
   .naipe{font-size:36px}.rotulo{font-size:33px}
   .planta{order:-1}
-  .etapas-topo,.escada{grid-template-columns:minmax(0,1fr)}
+  .etapas-topo,.escada,.etapas .notas{grid-template-columns:minmax(0,1fr)}
   .e2,.e3{padding-top:1.4rem}
   .etapa:not(.e4)::after{right:auto;left:50%;bottom:-1.55rem;margin-left:-.8rem;transform:rotate(90deg)}
   .escada{gap:1.75rem}
@@ -366,7 +373,7 @@ blockquote{font-size:clamp(1.35rem,2.1vw,1.7rem);line-height:1.42;color:var(--co
     <div class="cena">
       <div class="fala">
         <h1><span>Solistas </span><span>em Cena </span><span class="cidade">São Paulo</span></h1>
-        <p class="lead">Um projeto que incentiva novos talentos, de qualquer idade, a melhorar o estudo do instrumento através de obras solistas.</p>
+        <p class="lead">Um projeto que incentiva novos talentos, de qualquer idade, a melhorar o estudo do instrumento através de obras solistas. <b>Participar é gratuito.</b></p>
         <div class="acoes">
           <a class="btn btn-cheio btn-maior" href="#participar" data-tocar>Quero tocar</a>
           <a class="btn btn-claro btn-maior" href="#pix">Faça sua doação</a>
@@ -406,9 +413,9 @@ blockquote{font-size:clamp(1.35rem,2.1vw,1.7rem);line-height:1.42;color:var(--co
       <p><b>Nunca tocou?</b> As aulas gratuitas, a partir de 2027, são para você. <a href="#aulas">Veja as aulas</a></p>
       <p><b>Toca outro instrumento?</b> Agora o conjunto é de violino, viola, violoncelo e contrabaixo. Escreva mesmo assim e entre na lista para as próximas etapas.</p>
     </div>
-    <button class="grande grande-luz" id="participar" type="button" aria-expanded="false" aria-controls="form-tocar"><span><b>Você toca? Venha participar</b><i>Preencha a inscrição: leva um minuto, e a gente responde.</i></span><svg viewBox="0 0 32 32" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 16H27M18 7L27 16L18 25"/></svg></button>
+    <button class="grande grande-luz" id="participar" type="button" aria-expanded="false" aria-controls="form-tocar"><span><b>Você toca? Venha participar</b><i>É gratuito. Preencha a inscrição em um minuto, e respondemos em até 7 dias.</i></span><svg viewBox="0 0 32 32" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 16H27M18 7L27 16L18 25"/></svg></button>
     <form class="form" id="form-tocar" novalidate hidden>
-      <p class="form-intro">Ensaios aos sábados, das 13h30 às 15h, no metrô Santa Cruz. Depois da inscrição, entraremos em contato para combinar a sua vinda.</p>
+      <p class="form-intro">Ensaios aos sábados, das 13h30 às 15h, no metrô Santa Cruz. Participar é gratuito, e não há audição para entrar. Respondemos em até 7 dias, pelo WhatsApp, para combinar a sua vinda.</p>
       <div class="campo"><label for="t-nome">Nome completo</label><input id="t-nome" name="nome" autocomplete="name" maxlength="120"></div>
       <div class="campo"><label for="t-fone">WhatsApp com DDD</label><input id="t-fone" name="whatsapp" type="tel" inputmode="tel" autocomplete="tel" maxlength="30" placeholder="(11) 90000-0000"></div>
       <div class="campo"><label for="t-email">E-mail (opcional)</label><input id="t-email" name="email" type="email" inputmode="email" autocomplete="email" maxlength="120"></div>
@@ -457,39 +464,41 @@ blockquote{font-size:clamp(1.35rem,2.1vw,1.7rem);line-height:1.42;color:var(--co
         <svg class="plateia" data-etapa="1" viewBox="90 140 360 125" role="img" aria-label="Desenho com 10 pontos, um para cada músico da etapa 1"></svg>
         <h3><span>1</span>Camerata Pequena</h3>
         <p class="etapa-frase">O começo: grupo pequeno, cada som aparece.</p>
-        <p class="etapa-total"><b>10</b> músicos</p>
+        <p class="etapa-total"><span>a partir de</span> <b>10</b> músicos</p>
         <ul class="formacao"><li><i class="c1"></i>Violino I <b>2</b></li><li><i class="c2"></i>Violino II <b>2</b></li><li><i class="c3"></i>Viola <b>2</b></li><li><i class="c4"></i>Violoncelo <b>2</b></li><li><i class="c5"></i>Contrabaixo <b>2</b></li></ul>
-        <ul class="regras"><li>1 solo de cada instrumento por concerto</li><li>Violinos I e II escolhem juntos uma peça.</li><li>2 concertos para completar a etapa</li></ul>
+        <ul class="regras"><li>Espaço para 1 solo de cada instrumento por concerto</li><li>Violinos I e II escolhem juntos uma peça.</li></ul>
+        <div class="progresso"><p class="degraus" role="img" aria-label="1 de 2 concertos feitos"><i class="feito"></i><i></i></p><p><b>1 de 2 concertos feitos.</b> Falta só um para subir o degrau!</p></div>
       </li>
       <li class="etapa e2">
         <svg class="plateia" data-etapa="2" viewBox="90 140 360 125" role="img" aria-label="Desenho com 12 pontos, um para cada músico da etapa 2"></svg>
         <h3><span>2</span>Camerata Intermediária</h3>
         <p class="etapa-frase">O grupo ganha corpo, e cada naipe, mais voz.</p>
-        <p class="etapa-total"><b>12</b> músicos</p>
+        <p class="etapa-total"><span>a partir de</span> <b>12</b> músicos</p>
         <ul class="formacao"><li><i class="c1"></i>Violino I <b>3</b></li><li><i class="c2"></i>Violino II <b>3</b></li><li><i class="c3"></i>Viola <b>2</b></li><li><i class="c4"></i>Violoncelo <b>2</b></li><li><i class="c5"></i>Contrabaixo <b>2</b></li></ul>
-        <ul class="regras"><li>1 solo de cada instrumento por concerto</li><li>Violinos I e II já escolhem peças separadas.</li><li>3 concertos para completar a etapa</li></ul>
+        <ul class="regras"><li>Espaço para 1 solo de cada instrumento por concerto</li><li>Violinos I e II já escolhem peças separadas.</li><li>3 concertos para completar a etapa</li></ul>
       </li>
       <li class="etapa e3">
         <svg class="plateia" data-etapa="3" viewBox="90 100 360 165" role="img" aria-label="Desenho com 25 pontos, um para cada músico da etapa 3"></svg>
         <h3><span>3</span>Orquestra de Cordas</h3>
         <p class="etapa-frase">Agora é orquestra: o som enche a sala.</p>
-        <p class="etapa-total"><b>25</b> músicos</p>
+        <p class="etapa-total"><span>a partir de</span> <b>25</b> músicos</p>
         <ul class="formacao"><li><i class="c1"></i>Violino I <b>8</b></li><li><i class="c2"></i>Violino II <b>6</b></li><li><i class="c3"></i>Viola <b>4</b></li><li><i class="c4"></i>Violoncelo <b>5</b></li><li><i class="c5"></i>Contrabaixo <b>2</b></li></ul>
-        <ul class="regras"><li>1 solo de cada instrumento por concerto</li><li>Cada naipe escolhe a sua própria peça.</li><li>8 concertos para completar a etapa</li></ul>
+        <ul class="regras"><li>Espaço para 1 solo de cada instrumento por concerto</li><li>Cada naipe escolhe a sua própria peça.</li><li>8 concertos para completar a etapa</li></ul>
       </li>
       <li class="etapa e4">
         <svg class="plateia" data-etapa="4" viewBox="90 14 360 251" role="img" aria-label="Desenho com 37 pontos, um para cada músico da etapa 4"></svg>
         <h3><span>4</span>Orquestra Clássica</h3>
         <p class="etapa-frase">O ponto mais alto: madeiras e metais se juntam às cordas.</p>
-        <p class="etapa-total"><b>37</b> músicos</p>
+        <p class="etapa-total"><span>a partir de</span> <b>37</b> músicos</p>
         <ul class="formacao"><li><i class="c1"></i>Violino I <b>8</b></li><li><i class="c2"></i>Violino II <b>6</b></li><li><i class="c3"></i>Viola <b>4</b></li><li><i class="c4"></i>Violoncelo <b>5</b></li><li><i class="c5"></i>Contrabaixo <b>2</b></li><li><i class="c6"></i>Flauta <b>2</b></li><li><i class="c6"></i>Oboé <b>2</b></li><li><i class="c6"></i>Clarinete <b>2</b></li><li><i class="c6"></i>Fagote <b>2</b></li><li><i class="c7"></i>Trompa <b>2</b></li><li><i class="c7"></i>Trompete <b>2</b></li></ul>
-        <ul class="regras"><li>1 solo de cada instrumento por concerto</li><li>Cada naipe escolhe a sua própria peça.</li><li>8 concertos para completar a etapa</li></ul>
+        <ul class="regras"><li>Espaço para 1 solo de cada instrumento por concerto</li><li>Cada naipe escolhe a sua própria peça.</li><li>8 concertos para completar a etapa</li></ul>
       </li>
     </ol>
     <div class="notas">
-      <p><b>Solo e tutti, sempre</b> Da primeira à última etapa, há obras solistas e peças para o grupo inteiro. Você cresce sozinho e com todo mundo.</p>
-      <p><b>Uma etapa leva à outra</b> A cada concerto o grupo ganha experiência, recebe mais gente e fica pronto para o próximo degrau.</p>
+      <p><b>Solo e tutti, sempre</b> Da primeira à última etapa, há obras solistas e peças para o grupo inteiro. Ninguém é obrigado a solar: a gente incentiva, e você vai quando se sentir pronto.</p>
+      <p><b>Uma etapa leva à outra</b> A cada concerto o grupo ganha experiência e fica pronto para o próximo degrau. Os números são o ponto de partida: chegou mais gente? O grupo cresce!</p>
       <p><b>Grupos para cada nível</b> À medida que o projeto crescer, montaremos grupos de níveis diferentes. Você sobe de nível aqui dentro, até chegar à etapa 4, a Orquestra Clássica.</p>
+      <p><b>Sem audição para entrar</b> Ela existe só para subir de grupo, e acontece de tempos em tempos. Não foi dessa vez? Você continua no seu lugar e tenta na próxima.</p>
     </div>
     <div class="acoes"><a class="btn btn-cheio btn-maior" href="#participar" data-tocar>Quero fazer parte</a></div>
   </div>
@@ -501,7 +510,7 @@ blockquote{font-size:clamp(1.35rem,2.1vw,1.7rem);line-height:1.42;color:var(--co
       <h2>Aulas gratuitas de cordas</h2>
       <div class="lead">
         <p>Estamos organizando aulas gratuitas de violino, viola, violoncelo e contrabaixo a partir de 2027, para pessoas de todas as idades.</p>
-        <p>Não tem instrumento? Isso não vai impedir você de aprender: estamos comprando instrumentos, do nosso próprio bolso, para quem ainda não tem o seu.</p>
+        <p>Não tem instrumento? Isso não vai impedir você de começar: estamos comprando instrumentos, do nosso próprio bolso e com a ajuda de doações, para você usar durante as aulas.</p>
       </div>
     </div>
     <div class="escolha" role="group" aria-label="Escolha o instrumento">
@@ -595,7 +604,7 @@ blockquote{font-size:clamp(1.35rem,2.1vw,1.7rem);line-height:1.42;color:var(--co
         </form>
         <p class="jd-msg" id="jd-msg" role="status" hidden></p>
       </div>
-      <p class="pix-uso">Todas as doações são usadas na compra de estantes, cadeiras, instrumentos e materiais de audiovisual para o projeto. Acompanhe as compras em <a href="https://www.instagram.com/solistas_em_cena/">@solistas_em_cena</a>.</p>
+      <p class="pix-uso">Doar é opcional: participar do projeto é gratuito, sem mensalidade, sem inscrição paga e sem taxa. Todas as doações são usadas na compra de estantes, cadeiras, instrumentos e materiais de audiovisual para o projeto. Acompanhe as compras em <a href="https://www.instagram.com/solistas_em_cena/">@solistas_em_cena</a>.</p>
     </div>
   </div>
 </section>
@@ -703,7 +712,7 @@ blockquote{font-size:clamp(1.35rem,2.1vw,1.7rem);line-height:1.42;color:var(--co
       var msg=foi?'Olá! Acabei de me inscrever para tocar no Solistas em Cena. Meu nome é '+(d.responsavel||d.nome)+'.'
         :'Olá! Quero tocar no Solistas em Cena.\nNome: '+d.nome+'\nIdade: '+d.idade+'\nInstrumento: '+(d.qual||d.instrumento)+'\nToca há: '+d.tempo+'\nParticipar: '+d.modo+'\nSábados: '+d.sabado+(d.responsavel?'\nResponsável: '+d.responsavel:'')+(d.mensagem?'\n'+d.mensagem:'');
       document.getElementById('t-titulo').textContent=foi?'Inscrição enviada!':'Falta só um passo';
-      document.getElementById('t-texto').textContent=foi?'Recebemos a sua inscrição e vamos entrar em contato. Se quiser, avise também pelo WhatsApp.':'Toque no botão e envie a mensagem que já está pronta, para concluir a inscrição.';
+      document.getElementById('t-texto').textContent=foi?'Respondemos em até 7 dias, pelo WhatsApp. Se quiser, avise também por lá.':'Toque no botão e envie a mensagem que já está pronta, para concluir a inscrição.';
       document.getElementById('t-zap').href='https://wa.me/5513991700808?text='+encodeURIComponent(msg);
       f.hidden=true;pr.hidden=false;ab.setAttribute('aria-expanded','false');pr.focus();
     }
